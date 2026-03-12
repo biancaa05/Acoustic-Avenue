@@ -34,7 +34,7 @@ Proiectul este complet optimizat pentru orice dimensiune de ecran. Folosind **Me
 
 ## 🚀 Cum se vizualizează
 
-1.  Clonează acest repository: `git clone https://github.com/UTILIZATORUL-TAU/acoustic-avenue.git`
+1.  Clonează acest repository: `git clone https://github.com/biancaa05/Acoustic-Avenue.git`
 2.  Deschide fișierul `index.html` în orice browser modern.
 3.  Vizualizează versiunea online prin **GitHub Pages**.
 
