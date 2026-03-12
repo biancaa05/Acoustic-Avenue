@@ -21,8 +21,8 @@
     * **CSS Grid Areas:** Control precis asupra layout-ului complex pe 5 coloane.
     * **Animații Keyframes:** Efecte motorizate pentru pin-ul de locație și interacțiuni de tip hover.
     * **Flexbox:** Alinierea componentelor interne și a elementelor din header.
-* **Font Awesome 6:** Iconografie scalabilă de înaltă calitate (Guitar, Piano, Drum, Map-pin).
-* **Google Fonts API:** Integrarea fonturilor serif și script pentru un aspect grandios.
+* **Font Awesome 6:** Iconografie scalabilă de înaltă calitate (Map-pin).
+* **Google Fonts API:** Integrare de fonturi pentru un aspect grandios.
 
 ---
 
