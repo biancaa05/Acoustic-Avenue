@@ -1,17 +1,10 @@
+
 :root {
-    --mahon: #4A2C2A;
-    --gold: #C5A059;
-    --crem: #FDF5E6;
-    --white: #FFFFFF;
-    --border: #A68A71;
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
     --pag-margin: 8%;
     --grid-gap: 30px;
     --inner-padding: 25px;
     --media-max-w: 100%;
     --media-min-w: 200px;
-    --font-principal: 'Yeseva One', cursive;
-    --font-fancy: 'Playfair Display', serif;
 }
 
 * {
@@ -25,9 +18,21 @@ html {
 }
 
 body {
+    --mahon: #4A2C2A;
+    --gold: #C5A059;
+    --crem: #FDF5E6;
+    --white: #FFFFFF;
+    --border: #A68A71;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --font-principal: 'Yeseva One', cursive;
+    --font-fancy: 'Playfair Display', serif;
+    background-color: var(--crem);
+    font-family: var(--font-principal);
+    margin: 0;
+    padding: 0 8%;
     background-color: var(--crem);
     background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-    color: #2D1B1A;
+    color: var(--mahon);
     margin: 0;
     font-family: var(--font-principal);
     line-height: 1.6;
@@ -70,106 +75,6 @@ header img {
     border: none;
     box-shadow: none;
     margin: 0;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    position: relative;
-}
-
-nav ul li a {
-    color: var(--crem);
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: var(--font-titluri); 
-    font-size: 0.9rem;
-    padding: 25px 15px; 
-    display: block;
-    transition: all 0.3s ease;
-}
-
-nav ul li:hover > a { 
-    color: var(--gold) !important; 
-}
-
-nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: var(--crem);
-    border-top: 3px solid var(--gold);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    min-width: 260px;
-    box-shadow: var(--shadow);
-    top: 100%;
-    left: 0;
-    padding: 0;
-    z-index: 1000;
-}
-
-nav ul ul ul {
-    top: -3px;
-    left: 100%;
-    margin-left: 0;
-}
-
-nav ul ul li a {
-    color: var(--mahon);
-    background-color: var(--white);
-    font-family: var(--font-titluri);
-    font-size: 0.9rem;
-    font-weight: normal;
-    text-transform: none;
-    border-bottom: 1px solid rgba(166, 138, 113, 0.2) !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px !important;
-    color: var(--mahon) !important;
-}
-
-nav ul ul li:hover > a {
-    background-color: var(--crem) !important;
-    color: var(--gold) !important;
-}
-
-nav ul ul li:hover > ul::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -20px;
-    width: 25px;
-    height: 100%;
-    background: transparent;
-}
-
-nav ul li:hover > ul { 
-    display: block; 
-}
-
-nav > ul > li:has(ul) > a::after {
-    content: " \25BE";
-    font-size: 0.7rem;
-    opacity: 0.7;
-}
-
-nav ul ul li:has(ul) > a::after {
-    content: "\25B8";
-    color: var(--border);
-    font-size: 0.8rem;
-}
-
-nav ul ul li:last-child > a {
-    border-bottom: none !important;
 }
 
 #grid-pagina {
@@ -343,90 +248,26 @@ h2, h3 {
     transform: translate(6px, 6px);
 }
 
-/* ===================== MEDIA QUERIES ===================== */
 
 @media (max-width: 1200px) {
     :root {
         --pag-margin: 4%;
         --grid-gap: 20px;
-        --media-max-w: 90%;
     }
-    html { font-size: 17px; }
-
     #grid-pagina {
         grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-            "zona1 zona1" "zona8 zona8" "zona2 zona2"
-            "zona5 zona6" "zona4 zona3" "zona7 zona7";
+        grid-template-areas: "zona1 zona1" "zona8 zona8" "zona2 zona2" "zona5 zona6" "zona4 zona3" "zona7 zona7";
     }
-
-    #tab-orar {
-        min-width: 800px !important; 
-        width: 800px;
-    }
-    
-    #tab-orar td, #tab-orar th {
-        white-space: nowrap;
-    }
-
-    .container-tabel {
-        width: 100%;
-        overflow-x: auto;
-        margin: 20px 0;
-        border-radius: 8px;
-        padding: 10px 0; 
-    }
-
-    .showroom-wrapper {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    #dv-prezentare img {
-        box-shadow: 8px 8px 0px var(--mahon);
-        margin: 0 auto;
-    }
+    #tab-orar { width: 800px; }
+    .container-tabel { overflow-x: auto; }
+    .showroom-wrapper { flex-direction: column; }
 }
 
 @media (max-width: 700px) {
-    :root {
-        --pag-margin: 10px;
-        --grid-gap: 15px;
-        --inner-padding: 15px;
-        --media-min-w: 100%;
-    }
-    html { font-size: 15px; }
-
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-
-    .intro-oferte {
-        flex-direction: column;
-    }
-
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
-    }
-
     #grid-pagina { display: block; }
-    #grid-pagina > section { margin-bottom: var(--grid-gap); }
-
-    #footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .footer-section h3 {
-        display: block;
-    }
+    .intro-oferte { flex-direction: column; }
+    #footer-content { flex-direction: column; }
 }
-
-/* ===================== TABEL ===================== */
 
 table {
     width: 100% !important;
@@ -505,8 +346,6 @@ td {
     text-transform: uppercase;
     font-family: 'Cinzel', serif;
 }
-
-/* ===================== FOOTER ===================== */
 
 footer {
     background-color: var(--mahon);
@@ -595,8 +434,6 @@ footer {
     font-weight: bold;
 }
 
-/* ===================== LINK TOP ===================== */
-
 #link-top {
     position: fixed;
     bottom: 30px;
@@ -662,8 +499,6 @@ footer {
     border-bottom-color: var(--gold);
 }
 
-/* ===================== VIDEO / TUTORIAL ===================== */
-
 #container-tutorial iframe {
     width: 100% !important;
     aspect-ratio: 16 / 9;
@@ -702,8 +537,6 @@ footer {
     background: linear-gradient(to bottom, var(--gold), var(--mahon));
     color: white;
 }
-
-/* ===================== ANIMAȚII ===================== */
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -760,7 +593,6 @@ footer {
     100% { transform: rotate(-45deg) translate(0, 0); }
 }
 
-/* ===================== DIVERSE COMPONENTE ===================== */
 
 blockquote {
     position: relative;
@@ -1269,4 +1101,8 @@ math mfrac {
 math msub mi:first-child {
     color: var(--mahon);
     font-size: 1.1em;
+}
+
+.banner-proiect {
+  display: none;
 }

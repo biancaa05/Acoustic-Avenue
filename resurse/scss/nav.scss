@@ -1,0 +1,441 @@
+$transition-speed: 0.5s;
+$transition-type: ease;
+$mobile-breakpoint: 700px;
+$tablet-breakpoint: 1200px;
+$total-menu-items: 6; 
+
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#ch-menu {
+  display: none;
+}
+
+@keyframes bara-anim {
+  0% {
+    background-color: var(--mahon);
+    transform: scaleX(0.2) rotate(-90deg);
+    opacity: 0;
+  }
+  50% {
+    background-color: var(--crem);
+    transform: scaleX(1.3) rotate(15deg);
+    opacity: 0.6;
+  }
+  100% {
+    background-color: var(--gold);
+    transform: scaleX(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger-container {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 22px;
+}
+
+.bara {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--gold);
+  border-radius: 2px;
+  left: 0;
+
+  &.bara-1 { top: 0; }
+  &.bara-2 { top: 9px; }
+  &.bara-3 { top: 18px; }
+}
+
+
+nav#nav-principal {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+
+    li {
+      position: relative;
+      
+      @for $i from 1 through $total-menu-items {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.05s;
+        }
+      }
+
+
+      a {
+        @extend %flex-center;
+        text-decoration: none;
+        gap: 10px;
+        position: relative;
+        padding: 20px;
+        z-index: 2;
+        color: var(--gold);
+        transition: all $transition-speed $transition-type;
+
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          background: var(--crem);
+          transform: translate(-50%, -50%) scale(0);
+          transition: transform $transition-speed $transition-type;
+          z-index: -1;
+          opacity: 0.5;
+        }
+
+
+        &:hover::before {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+
+      ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: block;
+        min-width: 220px;
+        background-color: var(--mahon);
+        z-index: 100;
+        transform: scale(0);
+        transform-origin: top left;
+        transition: transform $transition-speed $transition-type;
+
+
+        li {
+          width: 100%;
+          a {
+            padding: 12px 20px;
+            background-color: var(--mahon);
+            color: var(--crem);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+
+            &:hover {
+              background-color: var(--gold);
+              color: var(--mahon);
+              text-shadow: 1px 1px 0px var(--white), -1px -1px 0px var(--white);
+            }
+          }
+          ul {
+            top: 0;
+            left: 100%;
+          }
+        }
+      }
+      &:hover > ul {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+@media (max-width: $mobile-breakpoint) {
+  #ch-menu { display: none; }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 2500;
+    width: 44px;
+    height: 44px;
+    z-index: 9999;
+  }
+
+  $delay-bara: 300ms;
+
+  @for $i from 1 through 3 {
+    .bara-#{$i} {
+      animation: bara-anim 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: ($i - 1) * $delay-bara;
+    }
+  }
+
+
+  nav#nav-principal > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+
+    left: -50px; 
+    right: -150px; 
+    top: 80px;
+    
+    transform: translateX(-120%); 
+
+    min-height: 40vh;
+    max-height: 120vh;
+    
+    background-color: var(--mahon) !important;
+    z-index: 2000;
+    margin: 0;
+    padding: 30px 100px 30px 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 100px) 0%,
+      100% 50%,
+      calc(100% - 100px) 100%,
+      0% 100%
+    );
+
+    transition: transform 0.45s cubic-bezier(0.25, 0.45, 0.45, 1);
+
+    &:has(li:hover > ul) {
+      right: -200px;
+      transition: all 0.3s ease;
+    }
+
+    li {
+      width: 100%;
+      text-align: left;
+      list-style: none;
+
+      &:first-child > a span { 
+        display: none !important; 
+      }
+      &:first-child > a i {
+        font-size: 1.5rem;
+      }
+
+      > a,
+      > label {
+        padding: 12px 20px;
+        color: var(--crem) !important; 
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.2s;
+
+        &:hover { 
+          background: rgba(197, 160, 89, 0.2);
+          color: var(--gold) !important; 
+        }
+
+        span { display: inline !important; }
+      }
+
+      > ul {
+        display: none;
+        position: static;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 5px 0;
+        
+        li a {
+          padding: 10px 20px 10px 40px;
+          font-size: 0.95rem;
+          color: var(--crem) !important;
+          opacity: 0.9;
+
+          &:hover { 
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--gold) !important;
+          }
+        }
+      }
+
+      &:hover > ul {
+        display: block;
+      }
+    }
+  }
+
+  #ch-menu:checked ~ header nav#nav-principal > ul {
+    transform: translateX(0);
+  }
+}
+
+
+.banner-proiect {
+  display: none;
+}
+
+
+@media print {
+
+  @page {
+    size: A4;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+  }
+
+  @page :left {
+    margin-left: 3cm;
+    margin-right: 1cm;
+  }
+
+  @page :right {
+    margin-left: 1cm;
+    margin-right: 3cm;
+  }
+
+  .banner-proiect {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 70% !important;
+    padding: 10px !important;
+    border: 4px inset black !important;
+    background-color: white !important;
+    color: black !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    z-index: 9999 !important;
+  }
+
+  img, video, audio, iframe, object, embed,
+  figure, figcaption, .container-video, #video-nav,
+  #harta-container, .decor-audio,
+  #link-top, a[href="#top"], #triunghi-top,
+  .hamburger, #ch-menu, input[type="checkbox"],
+  header img, #brand-container img {
+    display: none !important;
+  }
+
+  #grid-pagina {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #grid-pagina > section,
+  #grid-pagina > div,
+  #grid-pagina > article {
+    display: block !important;
+    width: 100% !important;
+    position: static !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  a, a:link, a:visited {
+    color: black !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    font-weight: normal !important;
+  }
+
+  header {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  h1 {
+    display: block !important;
+    text-align: center !important;
+    color: black !important;
+    font-size: 24pt !important;
+    margin: 20px auto !important;
+  }
+
+  nav#nav-principal {
+    display: block !important;
+    width: 100% !important;
+    page-break-after: always;
+    break-after: always;
+
+    ul {
+      display: block !important;
+      list-style-type: disc !important;
+      padding-left: 50px !important;
+      margin: 20px 0 !important;
+
+      li {
+        display: list-item !important;
+        float: none !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 5px 0 !important;
+
+        ul {
+          display: none !important;
+        }
+
+        a {
+          display: inline !important;
+          color: black !important;
+          text-decoration: none !important;
+          font-size: 14pt !important;
+          padding: 0 !important;
+          &::before { display: none !important; }
+        }
+
+        i { display: none !important; }
+      }
+    }
+  }
+
+  footer {
+    display: block !important;
+    position: relative !important;
+    background: transparent !important;
+    page-break-before: always;
+    break-before: always;
+  }
+
+  body::after {
+    content: "Turcu\A Bianca-Florentina";
+    white-space: pre;
+    position: fixed;
+    bottom: 1cm;
+    right: 1cm;
+    z-index: 9999;
+    width: 4cm;
+    height: 1cm;
+    border: 3px solid black;
+    border-radius: 10px;
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 8pt;
+    color: black;
+  }
+}

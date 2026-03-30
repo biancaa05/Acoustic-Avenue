@@ -1,0 +1,99 @@
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--crem);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: var(--font-titluri); 
+    font-size: 0.9rem;
+    padding: 25px 15px; 
+    display: block;
+    transition: all 0.3s ease;
+}
+
+nav ul li:hover > a { 
+    color: var(--gold) !important; 
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: var(--crem);
+    border-top: 3px solid var(--gold);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    min-width: 260px;
+    box-shadow: var(--shadow);
+    top: 100%;
+    left: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+nav ul ul ul {
+    top: -3px;
+    left: 100%;
+    margin-left: 0;
+}
+
+nav ul ul li a {
+    color: var(--mahon);
+    background-color: var(--white);
+    font-family: var(--font-titluri);
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-transform: none;
+    border-bottom: 1px solid rgba(166, 138, 113, 0.2) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px !important;
+    color: var(--mahon) !important;
+}
+
+nav ul ul li:hover > a {
+    background-color: var(--crem) !important;
+    color: var(--gold) !important;
+}
+
+nav ul ul li:hover > ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 25px;
+    height: 100%;
+    background: transparent;
+}
+
+nav ul li:hover > ul { 
+    display: block; 
+}
+
+nav > ul > li:has(ul) > a::after {
+    content: " \25BE";
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+nav ul ul li:has(ul) > a::after {
+    content: "\25B8";
+    color: var(--border);
+    font-size: 0.8rem;
+}
+
+nav ul ul li:last-child > a {
+    border-bottom: none !important;
+}

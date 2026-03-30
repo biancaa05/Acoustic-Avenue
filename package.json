@@ -1,0 +1,34 @@
+{
+  "name": "acoustic_avenue",
+  "version": "1.0.0",
+  "description": "magazin de instrumente muzicale",
+  "keywords": [
+    "acoustic avenue",
+    "magazin",
+    "instrumente muzicale",
+    "instrumente online",
+    "chitare",
+    "pian",
+    "showroom",
+    ""
+  ],
+  "homepage": "https://github.com/biancaa05/Acoustic-Avenue#readme",
+  "bugs": {
+    "url": "https://github.com/biancaa05/Acoustic-Avenue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biancaa05/Acoustic-Avenue.git"
+  },
+  "license": "ISC",
+  "author": "Bianca-Florentina Turcu",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  }
+}
