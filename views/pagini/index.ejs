@@ -7,6 +7,7 @@
     
   <%- include("../fragmente/head.ejs") %>
   </head>
+  <body>
     <%- include("../fragmente/header.ejs") %>
     <br>
     <main>
@@ -18,6 +19,31 @@
             <p class="subtitlu">Destinația ta pentru inspirație muzicală</p>
           </hgroup>
           <p class="intro">Vă mulțumim că ați ales Acoustic Avenue. Aici, sunetul prinde viață prin cele mai fine instrumente acustice și tehnologie audio de ultimă oră.</p>
+        <section id="sectiune-video">
+            <div class="video-container">
+                <video id="video-vtt" 
+                      controls 
+                      poster="/resurse/imagini/thumbnail_prezentare.png" 
+                      preload="none">
+                    
+                    <source src="/resurse/video/video_prezentare.mp4" type="video/mp4">
+                    <source src="/resurse/video/video_prezentare.webm" type="video/webm">
+
+                    <track src="/resurse/video/subtitrare-ro.vtt" 
+                          kind="subtitles" 
+                          srclang="ro" 
+                          label="Română" 
+                          default>
+                    
+                    <track src="/resurse/video/subtitrare-en.vtt" 
+                          kind="subtitles" 
+                          srclang="en" 
+                          label="English">
+                    
+                    Browserul dumneavoastră nu suportă tag-ul video.
+                </video>
+            </div>
+        </section>
           <section id="filozofie">
             <h3>Viziunea Noastră</h3>
             <!--CERINTA 9 (a), CERINTA 12 (a1,2)-->
@@ -241,7 +267,7 @@
               </dt>
               <dd> Detalii tehnice despre rezonanță găsiți aici:
                 <!--CERINTA 13 (b)-->
-                <a href="https://en.wikipedia.org/wiki/String_instrument#Resonance_methods">https://en.wikipedia.org/ <wbr>wiki/ <wbr>String_instrument# <wbr>Resonance_methods </a>
+                <a href="https://en.wikipedia.org/wiki/String_instrument#Resonance_methods">Vezi aici</a>
               </dd>
               <dt>
                 <dfn>Acțiune</dfn> (Pian)

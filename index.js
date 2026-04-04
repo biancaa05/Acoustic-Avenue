@@ -1,34 +1,121 @@
-const express= require("express");
-const path= require("path");
+const express = require("express");
+const path = require("path");
+const fs = require('fs');
 
-app= express();
-app.set("view engine", "ejs")
 
-console.log("Folder index.js", __dirname);
-console.log("Folder curent (de lucru)", process.cwd());
-console.log("Cale fisier", __filename);
+const vect_foldere = ["temp", "logs", "backup", "fisiere_uploadate"];
 
-app.get("/", function(req, res){
-    res.render("pagini/index");
+vect_foldere.forEach((numeFolder) => {
+    const caleCompleta = path.join(__dirname, numeFolder);
+
+    if (!fs.existsSync(caleCompleta)) {
+        fs.mkdirSync(caleCompleta);
+        console.log(`Folderul "${numeFolder}" a fost creat cu succes la locația: ${caleCompleta}`);
+    } else {
+        console.log(`Folderul "${numeFolder}" există deja.`);
+    }
 });
 
-app.get("/despre", function(req, res){
-    res.render("pagini/despre");
+let obGlobal = {
+    obErori: null
+};
+
+function initErori() {
+    try {
+        const caleJson = path.join(__dirname, 'erori.json');
+        let continutJson = fs.readFileSync(caleJson, 'utf8');
+        let obiectJson = JSON.parse(continutJson);
+
+        obiectJson.info_erori.forEach(eroare => {
+            eroare.imagine = obiectJson.cale_baza + eroare.imagine;
+        });
+        obiectJson.eroare_default.imagine = obiectJson.cale_baza + obiectJson.eroare_default.imagine;
+
+        obGlobal.obErori = obiectJson;
+    } catch (err) {
+        console.error("Eroare la citirea fisierului erori.json:", err);
+    }
+}
+
+initErori();
+
+const app = express();
+app.set("view engine", "ejs");
+
+app.use("/resurse", function(req, res, next) {
+    if (req.url.endsWith("/")) {
+        return afisareEroare(res, 403);
+    }
+    next();
 });
 
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 
-app.get("/cale", function(req, res){
-    console.log("Am primit o cerere GET de la adresa /cale");
-    res.send("Raspuns la <b style= 'color: red'>cererea</b> GET la adresa /cale")
+app.use(function(req, res, next) {
+    if (req.url.endsWith(".ejs")) {
+        return afisareEroare(res, 400);
+    }
+    next();
 });
 
-app.get("/cale2", function(req, res){
-    console.log("Am primit o cerere GET de la adresa /cale");
-    res.write("ceva\n");
-    res.write("altceva");
-    res.end();
+const rutePrincipale = ["/", "/index", "/home"];
+
+app.get(rutePrincipale, function(req, res) {
+    res.render("pagini/index", { ip: req.ip });
 });
 
-app.listen(8080);
-console.log("Serverul a pornit!");
+app.get("/contact", function(req, res){
+    res.render("pagini/contact", { ip: req.ip });
+});
+
+app.get("/favicon.ico", function(req, res) {
+    res.sendFile(path.join(__dirname, "resurse/imagini/favicon.ico"), function(err) {
+        if (err) {
+            console.warn("Faviconul nu a fost gasit la calea specificata.");
+            res.status(404).end();
+        }
+    });
+});
+
+function afisareEroare(res, identificator, titluParam, textParam, imagineParam) {
+    if (!obGlobal.obErori) {
+        return res.status(500).send("Eroare critica: Datele de eroare nu sunt incarcate.");
+    }
+
+    let eroareGasita = obGlobal.obErori.info_erori.find(e => e.identificator === identificator);
+    let eroareaMea = eroareGasita || obGlobal.obErori.eroare_default;
+
+    let titluFinal = titluParam || eroareaMea.titlu;
+    let textFinal = textParam || eroareaMea.text;
+    let imagineFinal = imagineParam || eroareaMea.imagine;
+
+    res.status(identificator || 500);
+
+    res.render("pagini/eroare", {
+        titlu: titluFinal,
+        text: textFinal,
+        imagine: imagineFinal,
+        ip: res.req.ip 
+    });
+}
+
+app.get("/:pagina", function(req, res) {
+    let numePagina = req.params.pagina;
+
+    res.render("pagini/" + numePagina, { ip: req.ip }, function(eroare, rezultatRandare) {
+        if (eroare) {
+            if (eroare.message.startsWith("Failed to lookup view")) {
+                afisareEroare(res, 404);
+            } else {
+                afisareEroare(res, 500, "Eroare Randare", "A aparut o eroare la procesarea paginii: " + eroare.message);
+            }
+        } else {
+            res.send(rezultatRandare);
+        }
+    });
+});
+
+const PORT = 8080;
+app.listen(PORT, () => {
+    console.log(`Serverul Acoustic Avenue a pornit la http://localhost:${PORT}`);
+});
