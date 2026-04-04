@@ -11,3 +11,7 @@ npm-debug.log*
 node_modules/
 dist/
 build/
+temp/
+logs/
+backup/
+fisiere_uploadate/
