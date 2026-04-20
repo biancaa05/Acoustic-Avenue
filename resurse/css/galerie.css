@@ -1,0 +1,279 @@
+.grid-galerie {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    grid-auto-flow: row;
+    counter-reset: nr-imag;
+    padding: 20px;
+    width: 100%;
+}
+
+.item-galerie figcaption .index-css::before {
+    counter-increment: nr-imag;
+    content: counter(nr-imag, decimal-leading-zero) ". ";
+}
+
+.spatiu-grid {
+    visibility: hidden;
+}
+
+.item-galerie img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    filter: brightness(50%);
+    transition: filter 1.2s ease-in-out;
+}
+
+.item-galerie figcaption {
+    background-color: var(--mahon);
+    color: var(--crem);
+    padding: 15px;
+    margin-top: -5px;
+    transition: all 1.2s ease-in-out;
+}
+
+.item-galerie:hover img {
+    filter: brightness(100%);
+}
+.item-galerie:hover figcaption {
+    background-color: var(--gold);
+    color: var(--mahon);
+}
+
+@media screen and (max-width: 1000px) {
+    .grid-galerie { 
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .item-galerie { 
+        grid-column: auto !important;
+    }
+    .spatiu-grid {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid-galerie { 
+        grid-template-columns: 1fr;
+    }
+}
+
+#container-reflexie {
+    position: relative;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#text, #text-reflectat {
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#text {
+    position: relative;
+    z-index: 2;
+}
+
+#text-reflectat {
+    position: absolute;
+    left: 26%;
+    top: 60%;
+    transform-origin: bottom left;
+    transform: translate(0px, -50px) rotateX(180deg) skew(-45deg) scaleY(0.8);
+    opacity: 0.5;
+    filter:blur(2px);
+    
+    transition: transform 2s ease-in-out, opacity 2.5s;
+    pointer-events: none;
+}
+
+#container-reflexie:hover #text-reflectat {
+    transform: translate(0px, -50px) rotateX(180deg) skew(-45deg) scaleY(2.0);
+    opacity: 0.2;
+}
+
+.separator-stilizat {
+  border: none;
+  opacity: 1; 
+  display: block;
+  
+  height: 5px; 
+  width: 80%;
+  margin: 50px auto;
+  position: relative;
+  overflow: visible;
+  border-radius: 5px;
+
+  background: linear-gradient(to right, 
+    var(--mahon) 0%, 
+    var(--mahon) 42%, 
+    transparent 42%, 
+    transparent 58%, 
+    var(--mahon) 58%, 
+    var(--mahon) 100%
+  );
+}
+
+.separator-stilizat::after {
+  content: "*"; 
+  
+  position: absolute;
+  left: 50%;
+  top: 350%; 
+  
+  transform: translate(-50%, -50%);
+  
+  color: var(--mahon);
+  font-size: 80px;
+  line-height: 1;
+  
+  background-color: transparent; 
+}
+
+.sectiune-text-coloane {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid var(--mahon);
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    @media (max-width: 992px) {
+        column-count: 1;
+        column-rule: none;
+    }
+}
+
+.zona-anunturi {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--mahon);
+    color: var(--gold);
+    padding: 8px 0;
+    border-bottom: 2px solid var(--gold);
+    font-family: 'Times New Roman', serif;
+}
+
+.text-animat {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    animation: plimbare-text 20s linear infinite;
+}
+
+@keyframes plimbare-text {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.zona-anunturi:hover .text-animat {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+#galerie-animata .galerie-container {
+    position: relative;
+    width: 500px;
+    height: 450px;
+    margin: 40px auto;
+    overflow: hidden;
+    border: 30px solid transparent;
+    border-image: url("/resurse/imagini/border-galerie.webp") 30 round;
+    background-color: var(--gold);
+}
+
+#galerie-animata .galerie-container:hover .gal-item {
+    animation-play-state: paused;
+}
+
+#galerie-animata .gal-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    z-index: 0;
+    
+    animation-name: geamuri-glisante;
+    animation-duration: calc(var(--nr-imag) * 3s);
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#galerie-animata .gal-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#galerie-animata .gal-item figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--mahon);
+    color: var(--white);
+    text-align: center;
+    padding: 8px 0;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+@keyframes geamuri-glisante {
+    0% {
+        opacity: 0;
+        z-index: 10;
+        clip-path: inset(0 50% 0 50%);
+    }
+    4% {
+        opacity: 1;
+        z-index: 10;
+        clip-path: inset(0 0 0 0);
+    }
+    25% {
+        opacity: 1;
+        z-index: 10;
+        clip-path: inset(0 0 0 0);
+    }
+    26% {
+        opacity: 1;
+        z-index: 1; 
+    }
+    30% {
+        opacity: 0;
+        z-index: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#galerie-animata .gal-item:nth-child(1)  { animation-delay: 0s; }
+#galerie-animata .gal-item:nth-child(2)  { animation-delay: 3s; }
+#galerie-animata .gal-item:nth-child(3)  { animation-delay: 6s; }
+#galerie-animata .gal-item:nth-child(4)  { animation-delay: 9s; }
+#galerie-animata .gal-item:nth-child(5)  { animation-delay: 12s; }
+#galerie-animata .gal-item:nth-child(6)  { animation-delay: 15s; }
+#galerie-animata .gal-item:nth-child(7)  { animation-delay: 18s; }
+#galerie-animata .gal-item:nth-child(8)  { animation-delay: 21s; }
+#galerie-animata .gal-item:nth-child(9)  { animation-delay: 24s; }
+#galerie-animata .gal-item:nth-child(10) { animation-delay: 27s; }
+#galerie-animata .gal-item:nth-child(11) { animation-delay: 30s; }
+#galerie-animata .gal-item:nth-child(12) { animation-delay: 33s; }
+#galerie-animata .gal-item:nth-child(13) { animation-delay: 36s; }
+#galerie-animata .gal-item:nth-child(14) { animation-delay: 39s; }
+#galerie-animata .gal-item:nth-child(15) { animation-delay: 42s; }

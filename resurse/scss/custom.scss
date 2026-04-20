@@ -1,0 +1,54 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+$font-family-sans-serif: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$h1-font-size: 3.5rem;
+$h2-font-size: 2.5rem;
+$h3-font-size: 1.75rem;
+
+$border-radius: 0.75rem;
+$border-radius-lg: 1.2rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 800px,
+  lg: 1100px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$custom-primary: #8b4513;
+$custom-secondary: #d4af37;
+$custom-dark-bg: #1a1a1a;
+
+$btn-link-color: $custom-secondary;
+$form-check-input-checked-color: $custom-primary;
+
+$theme-colors: (
+  "primary":    $custom-primary,
+  "secondary":  $custom-secondary,
+  "success":    #28a745,
+  "info":       #17a2b8,
+  "warning":    #ffc107,
+  "danger":     #dc3545,
+  "light":      #f8f4e5,
+  "dark":       $custom-dark-bg
+);
+
+$enable-shadows: true;
+$spacer: 1.25rem;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+body {
+    background-color: var(--crem);
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba($custom-secondary, 0.5);
+}

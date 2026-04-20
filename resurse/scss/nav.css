@@ -142,6 +142,11 @@ nav#nav-principal ul li:hover > ul {
   transform: scale(1);
 }
 
+@media (max-width: 1200px) {
+  nav#nav-principal ul li a span {
+    display: none;
+  }
+}
 @media (max-width: 700px) {
   #ch-menu {
     display: none;
@@ -182,7 +187,7 @@ nav#nav-principal ul li:hover > ul {
     transform: translateX(-120%);
     min-height: 40vh;
     max-height: 120vh;
-    background-color: var(--mahon) !important;
+    background-color: var(--mahon);
     z-index: 2000;
     margin: 0;
     padding: 30px 100px 30px 80px;
@@ -201,7 +206,7 @@ nav#nav-principal ul li:hover > ul {
     list-style: none;
   }
   nav#nav-principal > ul li:first-child > a span {
-    display: none !important;
+    display: none;
   }
   nav#nav-principal > ul li:first-child > a i {
     font-size: 1.5rem;
@@ -209,7 +214,7 @@ nav#nav-principal ul li:hover > ul {
   nav#nav-principal > ul li > a,
   nav#nav-principal > ul li > label {
     padding: 12px 20px;
-    color: var(--crem) !important;
+    color: var(--crem);
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -221,11 +226,11 @@ nav#nav-principal ul li:hover > ul {
   nav#nav-principal > ul li > a:hover,
   nav#nav-principal > ul li > label:hover {
     background: rgba(197, 160, 89, 0.2);
-    color: var(--gold) !important;
+    color: var(--gold);
   }
   nav#nav-principal > ul li > a span,
   nav#nav-principal > ul li > label span {
-    display: inline !important;
+    display: inline;
   }
   nav#nav-principal > ul li > ul {
     display: none;
@@ -237,13 +242,13 @@ nav#nav-principal ul li:hover > ul {
   nav#nav-principal > ul li > ul li a {
     padding: 10px 20px 10px 40px;
     font-size: 0.95rem;
-    color: var(--crem) !important;
+    color: var(--crem);
     opacity: 0.9;
   }
   nav#nav-principal > ul li > ul li a:hover {
     opacity: 1;
     background-color: rgba(255, 255, 255, 0.05);
-    color: var(--gold) !important;
+    color: var(--gold);
   }
   nav#nav-principal > ul li:hover > ul {
     display: block;
@@ -271,20 +276,20 @@ nav#nav-principal ul li:hover > ul {
     margin-right: 3cm;
   }
   .banner-proiect {
-    display: block !important;
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 70% !important;
-    padding: 10px !important;
-    border: 4px inset black !important;
-    background-color: white !important;
-    color: black !important;
-    font-weight: bold !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-    z-index: 9999 !important;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    padding: 10px;
+    border: 4px inset black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 9999;
   }
   img, video, audio, iframe, object, embed,
   figure, figcaption, .container-video, #video-nav,
@@ -292,86 +297,86 @@ nav#nav-principal ul li:hover > ul {
   #link-top, a[href="#top"], #triunghi-top,
   .hamburger, #ch-menu, input[type=checkbox],
   header img, #brand-container img {
-    display: none !important;
+    display: none;
   }
   #grid-pagina {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
   #grid-pagina > section,
   #grid-pagina > div,
   #grid-pagina > article {
-    display: block !important;
-    width: 100% !important;
-    position: static !important;
-    margin-bottom: 20px !important;
+    display: block;
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
     page-break-inside: avoid;
     -moz-column-break-inside: avoid;
          break-inside: avoid;
   }
   a, a:link, a:visited {
-    color: black !important;
-    text-decoration: none !important;
-    background: transparent !important;
-    font-weight: normal !important;
+    color: black;
+    text-decoration: none;
+    background: transparent;
+    font-weight: normal;
   }
   header {
-    display: block !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    min-height: auto !important;
+    display: block;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-height: auto;
   }
   h1 {
-    display: block !important;
-    text-align: center !important;
-    color: black !important;
-    font-size: 24pt !important;
-    margin: 20px auto !important;
+    display: block;
+    text-align: center;
+    color: black;
+    font-size: 24pt;
+    margin: 20px auto;
   }
   nav#nav-principal {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
     page-break-after: always;
     -moz-column-break-after: always;
          break-after: always;
   }
   nav#nav-principal ul {
-    display: block !important;
-    list-style-type: disc !important;
-    padding-left: 50px !important;
-    margin: 20px 0 !important;
+    display: block;
+    list-style-type: disc;
+    padding-left: 50px;
+    margin: 20px 0;
   }
   nav#nav-principal ul li {
-    display: list-item !important;
-    float: none !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: 5px 0 !important;
+    display: list-item;
+    float: none;
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
   }
   nav#nav-principal ul li ul {
-    display: none !important;
+    display: none;
   }
   nav#nav-principal ul li a {
-    display: inline !important;
-    color: black !important;
-    text-decoration: none !important;
-    font-size: 14pt !important;
-    padding: 0 !important;
+    display: inline;
+    color: black;
+    text-decoration: none;
+    font-size: 14pt;
+    padding: 0;
   }
   nav#nav-principal ul li a::before {
-    display: none !important;
+    display: none;
   }
   nav#nav-principal ul li i {
-    display: none !important;
+    display: none;
   }
   footer {
-    display: block !important;
-    position: relative !important;
-    background: transparent !important;
+    display: block;
+    position: relative;
+    background: transparent;
     page-break-before: always;
     -moz-column-break-before: always;
          break-before: always;

@@ -1,16 +1,16 @@
 {
   "cale_baza": "/resurse/imagini/erori",
   "eroare_default": {
-    "titlu": "Eroare Necunoscută",
-    "text": "A apărut o problemă neașteptată pe server. Vă rugăm să reveniți mai târziu.",
+    "titlu": "Eroare Necunoscuta",
+    "text": "A aparut o problema neasteptata pe server. Va rugam sa reveniti mai târziu.",
     "imagine": "/unknown_error.png"
   },
   "info_erori": [
     {
       "identificator": 404,
       "status": true,
-      "titlu": "Pagina nu a fost găsită (Eroare 404)",
-      "text": "Ne pare rău, dar pagina pe care o cauți nu există în universul Acoustic Avenue. Verifică adresa URL.",
+      "titlu": "Pagina nu a fost gasită (Eroare 404)",
+      "text": "Ne pare rau, dar pagina pe care o cauti nu exista in universul Acoustic Avenue. Verifica adresa URL.",
       "imagine": "/eroare404.png"
     },
     {
@@ -23,15 +23,15 @@
     {
     "identificator": 400,
     "status": true,
-    "titlu": "Cerere Invalidă (Eroare 400)",
-    "text": "Tentativă de acces neautorizat la fișierele de sistem (.ejs). Cererea dumneavoastră este invalidă.",
+    "titlu": "Cerere Invalida (Eroare 400)",
+    "text": "Tentativă de acces neautorizat la fisierele de sistem (.ejs). Cererea dumneavoastra este invalida.",
     "imagine": "/eroare400.png"
     },
     {
       "identificator": 500,
       "status": true,
-      "titlu": "Eroare Internă Server (Eroare 500)",
-      "text": "Serverul nostru a întâmpinat o problemă tehnică și nu a putut procesa cererea. Lucrăm la remedierea ei!",
+      "titlu": "Eroare Interna Server (Eroare 500)",
+      "text": "Serverul nostru a intampinat o problema tehnica si nu a putut procesa cererea. Lucram la remedierea ei!",
       "imagine": "/eroare500.png"
     }
   ]

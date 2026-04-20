@@ -235,6 +235,10 @@
             </section>
           </div>
           <p class="anunt intro">Livrăm inspirația direct la ușa ta! Toate instrumentele sunt verificate și acordate de specialiștii noștri înainte de expediere.</p>
+
+        <section id="galerie-home">
+          <%- include('../fragmente/galerie_statica') %>
+        </section>
           <hr class="separator-muzical" />
           <!--CERINTA 11-->
           <div id="container-video">
@@ -400,10 +404,48 @@
           <h3>Statistici</h3>
           <p>Lorem ipsum dolor sit amet. Vizite astăzi: 120. Produse vândute: 5.</p>
         </section>
-        <section id="zona4">
-          <h3>Anunțuri</h3>
-          <p>Lorem ipsum dolor sit amet. Livrăm gratuit pentru comenzi peste 500 RON!</p>
-        </section>
+        <section id="zona4" class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mb-4 border-bottom border-primary pb-2">Anunțuri & Oferte</h3>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card h-100 border-primary shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <i class="fa-solid fa-truck-fast"></i> Promoție Livrare
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Livrăm gratuit!</h5>
+          <p class="card-text">Pentru orice comandă care depășește suma de <strong>500 RON</strong>, transportul este suportat de noi. Profită acum!</p>
+          <a href="/produse" class="btn btn-outline-primary btn-sm">Vezi Produse</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 border-secondary shadow-sm">
+        <div class="card-header bg-secondary text-mahon">
+          <i class="fa-solid fa-clock"></i> Program Sărbători
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Program Special</h5>
+          <p class="card-text">În perioada următoare, showroom-ul Acoustic Avenue va fi deschis între orele 10:00 - 16:00 pentru testarea instrumentelor.</p>
+          <span class="badge bg-info text-dark">Info Utile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning mt-4 d-flex align-items-center" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-3"></i>
+    <div>
+      Stoc limitat pentru chitarele electrice din seria <strong>Red ST</strong>! Verifică disponibilitatea în magazin.
+    </div>
+  </div>
+</section>
         <section id="zona7">
           <h3>Info Server</h3>
           <p>Lorem ipsum: Server status online. Versiune site: 2.0.</p>

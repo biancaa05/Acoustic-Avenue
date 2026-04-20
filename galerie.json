@@ -1,0 +1,68 @@
+{
+  "cale_galerie": "/resurse/imagini/galerie",
+  "imagini": [
+    {
+      "cale_relativa": "orga.jpg",
+      "nume_imag": "Orgă Electronică",
+      "alternativ": "Sintetizator profesional",
+      "descriere_imag": "Orgă cu peste 500 de sunete integrate.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "chit_el.jpg",
+      "nume_imag": "Chitară Electrică Red",
+      "alternativ": "Chitară electrică roșie stil ST",
+      "descriere_imag": "Sunet agresiv perfect pentru rock.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "chit_el2.jpg",
+      "nume_imag": "Chitară Electrică Black",
+      "alternativ": "Chitară electrică neagră",
+      "descriere_imag": "Design modern și doze active.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "microfon.jpg",
+      "nume_imag": "Microfon Condensator",
+      "alternativ": "Microfon de studio profesional",
+      "descriere_imag": "Captare clară pentru voce și instrumente.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "casti.jpg",
+      "nume_imag": "Căști Monitorizare",
+      "alternativ": "Căști audio de studio",
+      "descriere_imag": "Izolare fonică și fidelitate înaltă.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "vioara.jpg",
+      "nume_imag": "Vioară Clasică",
+      "alternativ": "Vioară din lemn lăcuit",
+      "descriere_imag": "Instrument cu rezonanță caldă.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "trompeta.jpg",
+      "nume_imag": "Trompetă Aurie",
+      "alternativ": "Trompetă din alamă",
+      "descriere_imag": "Instrument de suflat pentru jazz.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "toba.jpg",
+      "nume_imag": "Tobă Mare",
+      "alternativ": "Tobă din set de percuție",
+      "descriere_imag": "Baza ritmului în orice formație.",
+      "intervale_ore": [[0, 24]]
+    },
+    {
+      "cale_relativa": "boxa.jpg",
+      "nume_imag": "Boxă Activă",
+      "alternativ": "Monitor audio activ",
+      "descriere_imag": "Putere și claritate pentru audiții.",
+      "intervale_ore": [[0, 24]]
+    }
+  ]
+}

@@ -254,6 +254,9 @@ h2, h3 {
         --pag-margin: 4%;
         --grid-gap: 20px;
     }
+    html {
+        font-size: 17px;
+    }
     #grid-pagina {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "zona1 zona1" "zona8 zona8" "zona2 zona2" "zona5 zona6" "zona4 zona3" "zona7 zona7";
@@ -264,9 +267,16 @@ h2, h3 {
 }
 
 @media (max-width: 700px) {
+    html {
+        font-size: 16px;
+    }
     #grid-pagina { display: block; }
     .intro-oferte { flex-direction: column; }
     #footer-content { flex-direction: column; }
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 table {
@@ -397,7 +407,8 @@ footer {
     margin-bottom: 12px;
 }
 
-.footer-section a {
+.footer-section a,
+.footer-section a:visited {
     color: var(--crem);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -511,31 +522,81 @@ footer {
 
 #video-nav {
     display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    padding-right: 20px;
-    border-top: 5px solid var(--mahon);
+    justify-content: flex-start;
+    gap: 30px; 
+    border-top: 6px solid var(--mahon);
+    position: relative; 
+    z-index: 10;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #video-nav a {
     display: block;
+    width: 120px; 
+    text-align: center;
     text-decoration: none;
-    color: var(--mahon);
+    color: var(--mahon); 
     font-weight: bold;
-    font-size: 0.85rem;
-    padding: 10px 20px;
-    background: linear-gradient(to bottom, #f9f2e7, var(--gold));
+    font-size: 0.7rem; 
+    padding: 10px 5px; 
+    
+    background: linear-gradient(
+        to bottom, 
+        var(--mahon) 0%, 
+        var(--mahon) 15%, 
+        var(--crem) 15%, 
+        var(--gold) 100%
+    );
+    
     border: 2px solid var(--mahon);
     border-top: none;
-    border-radius: 0 0 15px 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 0 0 12px 12px;
+    
+    position: relative;
+    z-index: 1;
+    transition: z-index 0.4s ease;
+}
+
+#video-nav a::after {
+    content: "";
+    position: absolute;
+    top: 15%; 
+    left: 0; 
+    width: 100%; 
+    height: 85%;
+    background-color: var(--white);
+    border-radius: 0 0 10px 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1; 
+}
+
+#video-nav a:hover::after {
+    opacity: 1;
 }
 
 #video-nav a:hover {
-    transform: translateY(5px);
-    background: linear-gradient(to bottom, var(--gold), var(--mahon));
-    color: white;
+    z-index: 2;
+}
+
+#video-nav a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px; 
+    right: -15px;
+    height: 10px;
+    
+    background-image: 
+        linear-gradient(to bottom left, var(--mahon) 50%, transparent 50%),
+        linear-gradient(to bottom right, var(--mahon) 50%, transparent 50%);
+    background-position: left top, right top;
+    background-size: 15px 10px;
+    background-repeat: no-repeat;
+    
+    pointer-events: none;
+    z-index: 5;
 }
 
 @keyframes fadeInUp {
@@ -873,7 +934,12 @@ a[download]::before {
 
 ::selection {
     background-color: var(--gold);
-    color: var(--mahon);
+    color: var(--crem);
+}
+
+::-moz-selection {
+    background-color: var(--gold);
+    color: var(--crem);
 }
 
 ::-webkit-scrollbar { width: 12px; }
@@ -1134,7 +1200,11 @@ a:visited:not(nav a) {
     color: var(--mahon);
 }
 
-a[href^="http"]::before {
+footer a[href^="http"]::before {
+    content: none;
+}
+
+a[href^="http"]:not(footer a):not(#video-nav a)::before {
     content: "⮳";
     display: inline-block;
     margin-right: 0.3em;
@@ -1143,7 +1213,7 @@ a[href^="http"]::before {
     transition: color 0.3s linear;
 }
 
-a[href^="http"]:hover::before {
+a[href^="http"]:not(footer a):not(#video-nav a):hover::before {
     color: var(--crem);
 }
 
