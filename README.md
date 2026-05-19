@@ -31,29 +31,33 @@ Ca magazin online, **Acoustic Avenue** acoperă fluxul complet al unei experien�
 ## 🛠️ Ghid de Instalare și Rulare Locală
 
 
-# 1. Navigarea în directorul proiectului
+### 1. Navigarea în directorul proiectului
 ```bash
 cd Proiect_HTML
 ```
 
-# 2. Instalarea pachetelor și dependențelor NPM înregistrate în package.json
+### 2. Instalarea pachetelor și dependențelor NPM înregistrate în package.json
 ```bash
 npm install
 ```
-# 3. Configurarea bazei de date (PostgreSQL)
-# - Asigurați-vă că serverul PostgreSQL este activ local sau la distanță.
-# - Creați o bază de date dedicată (ex: acoustic_avenue).
-# - Executați scriptul de inițializare .sql pentru generarea tabelelor (utilizatori, produse).
-# - Actualizați credențialele (host, user, password, port, database) în fișierul de configurare din backend.
+### 3. Configurarea bazei de date (PostgreSQL)
+- Asigurați-vă că serverul PostgreSQL este activ local sau la distanță.
+- Creați o bază de date dedicată (ex: acoustic_avenue).
+- Executați scriptul de inițializare .sql pentru generarea tabelelor (utilizatori, produse).
+- Actualizați credențialele (host, user, password, port, database) în fișierul de configurare din backend.
 
-# 4. Pornirea serverului de dezvoltare (cu monitorizare automată în timp real)
+### 4. Pornirea serverului de dezvoltare (cu monitorizare automată în timp real)
 ```bash
 nodemon index.js
 ```
-# Notă: Dacă pachetul nodemon nu este disponibil global, porniți aplicația simplu prin Node:
+Notă: Dacă pachetul nodemon nu este disponibil global, porniți aplicația simplu prin Node:
 ```bash
 node index.js
 ```
+
+### 5. Accesarea aplicației în browser
+Odată ce terminalul confirmă pornirea serverului, navigați la adresa:
+http://localhost:8080
 
 ## 🎓 Autor și Informații Academice
 Proiect realizat de: Turcu Bianca-Florentina
@@ -66,6 +70,3 @@ Disciplina: Tehnici Web
 
 Profesor Coordonator: Ciocan Irina
 
-# 5. Accesarea aplicației în browser
-# Odată ce terminalul confirmă pornirea serverului, navigați la adresa:
-# http://localhost:8080
