@@ -45,7 +45,40 @@
         <small> &copy; 2026 <strong>Acoustic Avenue</strong> - Proiect realizat de <span>Bianca-Florentina Turcu</span>. Creat la data de: <time datetime="2026-02-27">27 Februarie 2026</time>
         </small>
       </div>
+
+        <p class="banner-proiect">Acesta este un proiect școlar!</p>
+        
       <a href="#" id="link-top">
         <div id="triunghi-top"></div>
       </a>
-    </footer>
+
+    <div class="container text-center text-muted">
+        <p>&copy; 2026 Acoustic Avenue</p>
+    </div>
+
+    <div id="zona-fixa-tema" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+
+        <button type="button" class="btn-orar-oval" onclick="if(typeof afiseazaOrar === 'function') { afiseazaOrar(); } else { console.error('Fisierul orar.js nu este incarcat corect!'); }">
+        <i class="fa-solid fa-clock"></i> Orar
+    </button>
+    <%- include("../fragmente/orar") %>
+      <div class="theme-widget shadow-sm">
+          <span class="icon-container">
+              <i class="bi bi-sun-fill" id="icon-light"></i>
+              <i class="bi bi-moon-stars-fill d-none" id="icon-dark"></i>
+              <i class="bi bi-tree-fill d-none" id="icon-forest"></i>
+          </span>
+          
+          <!-- Select-ul -->
+          <select id="select-tema">
+              <option value="light">Clasic</option>
+              <option value="dark">Dark</option>
+              <option value="forest">Forest</option>
+          </select>
+      </div>
+  </div>
+</div>
+
+</footer>
+<script src="/resurse/js/tema.js"></script>
+<script src="/resurse/js/orar.js"></script>

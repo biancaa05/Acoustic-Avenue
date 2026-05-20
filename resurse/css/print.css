@@ -1,31 +1,21 @@
 @media print {
+
   @page {
     size: A4;
-    margin: 1cm;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
   }
+
   @page :left {
     margin-left: 3cm;
     margin-right: 1cm;
   }
+
   @page :right {
     margin-left: 1cm;
     margin-right: 3cm;
   }
-  #grid-pagina {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  #grid-pagina > section,
-  #grid-pagina > div,
-  #grid-pagina > article {
-    display: block !important;
-    width: 100% !important;
-    position: static !important;
-    margin-bottom: 20px !important;
-    page-break-inside: avoid;
-  }
+
   header {
     display: block !important;
     background: transparent !important;
@@ -34,55 +24,48 @@
     padding: 0 !important;
     min-height: auto !important;
   }
-  header h1 {
-    display: block !important;
-    text-align: center !important;
-    margin: 20px 0 !important;
-    color: black !important;
-    font-size: 24pt !important;
+
+  .banner-proiect {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 4px inset black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 80vh;
   }
-  nav#nav-principal {
-    display: block !important;
-    width: 100% !important;
-    page-break-after: always;
-  }
-  nav#nav-principal ul {
-    display: block !important;
-    list-style-type: disc !important;
-    padding-left: 50px !important;
-    margin: 20px 0 !important;
-  }
-  nav#nav-principal ul li {
-    display: list-item !important;
-    float: none !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: 5px 0 !important;
-  }
-  nav#nav-principal ul li ul {
-    display: none !important;
-  }
-  nav#nav-principal ul li a {
-    display: inline !important;
-    color: black !important;
-    text-decoration: none !important;
-    font-size: 14pt !important;
-    padding: 0 !important;
-  }
-  nav#nav-principal ul li a::before {
-    display: none !important;
-  }
-  nav#nav-principal ul li i {
-    display: none !important;
-  }
+
   img, video, audio, iframe, object, embed,
-  figure, figcaption, .container-video, .video-nav,
+  figure, figcaption, .container-video, #video-nav,
   #harta-container, .decor-audio,
   #link-top, a[href="#top"], #triunghi-top,
-  .hamburger, #ch-menu, input[type=checkbox],
+  .hamburger, #ch-menu, input[type="checkbox"],
   header img, #brand-container img {
     display: none !important;
   }
+
+  #grid-pagina {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #grid-pagina > section,
+  #grid-pagina > div,
+  #grid-pagina > article {
+    display: block !important;
+    width: 100% !important;
+    position: static !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
   a, a:link, a:visited {
     color: black !important;
     text-decoration: none !important;
@@ -90,34 +73,73 @@
     font-weight: normal !important;
   }
 
-  body > footer:first-of-type {
+  h1 {
     display: block !important;
-    position: relative !important;
-    margin-top: 2cm !important;
-    background: transparent !important;
+    text-align: center !important;
+    color: black !important;
+    font-size: 24pt !important;
+    margin: 20px auto !important;
   }
 
-  body > footer:first-of-type .banner-proiect {
+  nav#nav-principal {
+    display: block !important;
+    width: 100% !important;
+    page-break-after: always;
+    break-after: always;
+
+    ul {
+      display: block !important;
+      list-style-type: disc !important;
+      padding-left: 50px !important;
+      margin: 20px 0 !important;
+
+      li {
+        display: list-item !important;
+        float: none !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 5px 0 !important;
+
+        ul {
+          display: none !important;
+        }
+
+        a {
+          display: inline;
+          color: black;
+          text-decoration: none;
+          font-size: 14pt;
+          padding: 0;
+          &::before { display: none; }
+        }
+
+        span {
+      display: inline !important;
+      }
+      i {
+      display: none !important;
+    }
+      }
+    }
+  }
+
+  footer {
     display: block !important;
     position: relative !important;
-    margin: 20px auto 0 auto !important;
-    width: 70% !important;
-    max-width: 100% !important;
-    padding: 10px !important;
-    border: 4px inset black !important;
-    background-color: white !important;
-    color: black !important;
-    font-weight: bold !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
+    background: transparent !important;
+    page-break-before: always  !important;
+    break-before: always;
+    .banner-proiect {
+      display: none !important;
+    }
   }
 
   body::after {
-    content: "Turcu \a Bianca-Florentina";
+    content: "Turcu\A Bianca-Florentina";
     white-space: pre;
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 1cm;
+    right: 1cm;
     z-index: 9999;
     width: 4cm;
     height: 1cm;
@@ -129,7 +151,7 @@
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    font-size: 10pt;
+    font-size: 8pt;
     color: black;
   }
 }

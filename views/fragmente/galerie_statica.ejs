@@ -1,12 +1,21 @@
 <section id="galerie-statica">
     <h2>Galerie Statică</h2>
     <div class="grid-galerie">
-        <% imagini.forEach((img, index) => { 
-            let numeFaraExt = img.cale_relativa.split('.')[0];
-            let ext = img.cale_relativa.split('.')[1];
-            let pozitie = index % 4;
+        <% 
+            let gridIndex = 0;
+            let emptySpots = [0, 4, 8, 10];
+
+            for (let img of imagini) {
+                while (emptySpots.includes(gridIndex % 12)) {
+                    %>
+                    <div class="spatiu-grid"></div>
+                    <%
+                    gridIndex++;
+                }
+
+                let numeFaraExt = img.cale_relativa.split('.')[0];
+                let ext = img.cale_relativa.split('.')[1];
         %>
-            <% if (pozitie === 0) { %>
                 <figure class="item-galerie">
                     <picture>
                         <source srcset="<%= cale %>/<%= numeFaraExt %>-med.<%= ext %>" media="(max-width: 1000px)">
@@ -20,61 +29,9 @@
                         <% if(img.atribuire) { %> <br><small><%= img.atribuire %></small> <% } %>
                     </figcaption>
                 </figure>
-                <div class="spatiu-grid"></div>
-                <div class="spatiu-grid"></div>
-
-            <% } else if (pozitie === 1) { %>
-                <div class="spatiu-grid"></div>
-                <figure class="item-galerie">
-                    <picture>
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-med.<%= ext %>" media="(max-width: 1000px)">
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-mic.<%= ext %>" media="(max-width: 600px)">
-                        <img src="<%= cale %>/<%= img.cale_relativa %>" 
-                             alt="<%= img.alternativ || img.nume_imag %>" 
-                             title="<%= img.descriere_imag %>">
-                    </picture>
-                    <figcaption>
-                        <span class="index-css"></span> <%= img.descriere_imag %>
-                        <% if(img.atribuire) { %> <br><small><%= img.atribuire %></small> <% } %>
-                    </figcaption>
-                </figure>
-                <div class="spatiu-grid"></div>
-
-            <% } else if (pozitie === 2) { %>
-                <div class="spatiu-grid"></div>
-                <div class="spatiu-grid"></div>
-                <figure class="item-galerie">
-                    <picture>
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-med.<%= ext %>" media="(max-width: 1000px)">
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-mic.<%= ext %>" media="(max-width: 600px)">
-                        <img src="<%= cale %>/<%= img.cale_relativa %>" 
-                             alt="<%= img.alternativ || img.nume_imag %>" 
-                             title="<%= img.descriere_imag %>">
-                    </picture>
-                    <figcaption>
-                        <span class="index-css"></span> <%= img.descriere_imag %>
-                        <% if(img.atribuire) { %> <br><small><%= img.atribuire %></small> <% } %>
-                    </figcaption>
-                </figure>
-
-            <% } else { %>
-                <div class="spatiu-grid"></div>
-                <figure class="item-galerie">
-                    <picture>
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-med.<%= ext %>" media="(max-width: 1000px)">
-                        <source srcset="<%= cale %>/<%= numeFaraExt %>-mic.<%= ext %>" media="(max-width: 600px)">
-                        <img src="<%= cale %>/<%= img.cale_relativa %>" 
-                             alt="<%= img.alternativ || img.nume_imag %>" 
-                             title="<%= img.descriere_imag %>">
-                    </picture>
-                    <figcaption>
-                        <span class="index-css"></span> <%= img.descriere_imag %>
-                        <% if(img.atribuire) { %> <br><small><%= img.atribuire %></small> <% } %>
-                    </figcaption>
-                </figure>
-                <div class="spatiu-grid"></div>
-            <% } %>
-
-        <% }); %>
+        <% 
+                gridIndex++;
+            }
+        %>
     </div>
 </section>

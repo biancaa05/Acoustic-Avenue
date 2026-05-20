@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= prod.nume %> - Acoustic Avenue</title>
+    <%- include('../fragmente/head.ejs') %>
+    <link rel="stylesheet" href="/resurse/css/produs-unic.css" type="text/css" />
+</head>
+<body>
+    <%- include('../fragmente/header.ejs') %>
+
+    <div class="plansa-produs">
+    <div class="sectiune-superioara">
+        
+        <div class="container-foto" style="position:relative">
+
+            <% 
+            let T_prod = 7 * 24 * 60 * 60 * 1000; 
+                if ((new Date() - new Date(prod.data_adaugare)) <= T_prod) { 
+            %>
+                <span class="badge-produs-nou">✨ NOU</span>
+            <% } %>
+            <div id="carouselProdus" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <% for (let i = 1; i <= prod.nr_imagini; i++) { %>
+                        <div class="carousel-item <%= i === 1 ? 'active' : '' %>">
+                            <img 
+                                src="/resurse/imagini/produse/prod<%= prod.id %>/<%= i %>.webp"
+                                class="d-block w-100"
+                                alt="<%= prod.nume %> - imagine <%= i %>">
+                        </div>
+                    <% } %>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProdus" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselProdus" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="detalii-principale">
+            <div class="header-produs-body">
+                <span class="cod-produs">SKU: ent<%= prod.id %></span>
+                <h1 class="nume-mare-body"><%= prod.nume %></h1>
+                <div class="categorie-badge"><%= prod.categorie.toUpperCase() %></div>
+            </div>
+
+            <div class="plansa-pret">
+                <% if (locals.ofertaCurenta && prod.categorie == ofertaCurenta.categorie) { %>
+                    <div class="container-pret-oferta">
+                        <span class="pret-vechi-unic" style="text-decoration: line-through; color: #888; font-size: 1.2rem; display: block;">
+                            <%= prod.pret %> RON
+                        </span>
+                        <span class="valoare-pret" style="color: #4a2c2a; font-weight: 900; font-size: 2.5rem;">
+                            <% let pretRedusUnic = (prod.pret * (1 - ofertaCurenta.reducere / 100)).toFixed(2); %>
+                            <%= pretRedusUnic %> <small>RON</small>
+                        </span>
+                        <div class="insigna-reducere" style="background-color: #d4af37; color: #4a2c2a; padding: 5px 10px; border-radius: 5px; display: inline-block; font-weight: bold; margin-top: 5px;">
+                            OFERTĂ: -<%= ofertaCurenta.reducere %>%
+                        </div>
+                    </div>
+                <% } else { %>
+                    <span class="valoare-pret"><%= prod.pret %> <small>RON</small></span>
+                <% } %>
+
+                <button class="btn-colectie">
+                    <i class="fa-solid fa-cart-plus"></i> <span>Adaugă</span>
+                </button>
+            </div>
+
+            <button class="btn-compara" data-id="<%= prod.id %>" data-nume="<%= prod.nume %>" onclick="adaugaLaComparare(this)">
+                Compară
+            </button>
+
+            <div class="panou-info">
+                <h3><i class="fa-solid fa-feather-pointed"></i> Povestea</h3>
+                <p class="descriere-text"><%= prod.descriere %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sectiune-inferioara-linie">
+        <div class="panou-info">
+            <h3><i class="fa-solid fa-sliders"></i> Specificații Tehnice</h3>
+            <div class="grid-specs">
+                <div class="item-spec"><strong>Nivel</strong><span><%= prod.nivel_expertiza %></span></div>
+                <div class="item-spec"><strong>Greutate</strong><span><%= prod.greutate_g %> g</span></div>
+                <div class="item-spec"><strong>Culoare</strong><span><%= prod.culoare %></span></div>
+                <div class="item-spec"><strong>Garanție</strong><span><%= prod.are_garantie_extinsa ? 'Da' : 'Nu' %></span></div>
+            </div>
+        </div>
+
+        <div class="panou-info">
+            <h3><i class="fa-solid fa-mound"></i> Materiale</h3>
+            <div class="etichete-materiale">
+                <% let mats = prod.materiale.split(','); for(let m of mats) { %>
+                    <span class="bulina-material"><%= m.trim() %></span>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <% if (locals.seturiDinProdus && seturiDinProdus.length > 0) { %>
+    <hr style="margin: 50px 0; border-color: #4a2c2a; opacity: 0.2;">
+    <section class="seturi-asociate" style="margin-bottom: 60px;">
+        <h3 style="color: #4a2c2a; font-weight: 800; text-transform: uppercase; margin-bottom: 30px; font-size: 1.3rem;">
+            <i class="fa-solid fa-box-open"></i> Acest produs este disponibil și în pachete avantajoase:
+        </h3>
+        
+        <div class="lista-seturi-produs" style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+            <% for (let pachet of seturiDinProdus) { %>
+                <div class="card-pachet-mare" style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative;">
+                    
+                    <h4 style="color: #4a2c2a; margin-top: 0; font-size: 1.4rem; font-weight: 700;"><%= pachet.nume %></h4>
+                    <p style="color: #666; font-style: italic; font-size: 0.95rem; margin-bottom: 25px;"><%= pachet.descriere %></p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 25px; width: 100%;">
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; width: 100%;">
+                            <% 
+                                let totalPachet = 0;
+                                let n_produse = pachet.produse.length;
+                            %>
+                            <% for (let prodPachet of pachet.produse) { %>
+                                <% totalPachet += parseFloat(prodPachet.pret); %>
+                                
+                                <div class="produs-pachet-card" style="width: 100%; border: 1px solid #eee; padding: 15px; border-radius: 8px; background: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; min-height: 320px;">
+                                    <a href="/produs/<%= prodPachet.id %>" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                        
+                                        <div style="width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; background: #fff; overflow: hidden;">
+                                            <img src="/resurse/imagini/produse/prod<%= prodPachet.id %>/1.webp" 
+                                                 alt="<%= prodPachet.nume %>"
+                                                 style="max-width: 100%; max-height: 100%; object-fit: contain;"
+                                                 onerror="this.onerror=null; this.src='/resurse/imagini/produs-placeholder.webp';">
+                                        </div>
+                                        
+                                        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start;">
+                                            <p style="font-size: 0.95rem; font-weight: bold; color: #4a2c2a; margin: 0 0 8px 0; line-height: 1.4; text-align: center;">
+                                                <%= prodPachet.nume %>
+                                            </p>
+                                        </div>
+                                    </a>
+
+                                    <div style="margin-top: auto; text-align: center; width: 100%;">
+                                        <span style="color: #777; font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 8px;">
+                                            <%= prodPachet.pret %> RON
+                                        </span>
+                                        <button class="btn-colectie" data-id="<%= prodPachet.id %>" style="background: #4a2c2a; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; box-sizing: border-box;">
+                                            <i class="fa-solid fa-cart-plus"></i> Adaugă Produs
+                                        </button>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        
+                        <% 
+                            let reducerePachet = Math.min(5, n_produse) * 5;
+                            let pretFinalPachet = (totalPachet * (1 - reducerePachet / 100)).toFixed(2);
+                        %>
+                        <div style="align-self: flex-end; text-align: right; background: #4a2c2a; color: white; padding: 15px 25px; border-radius: 8px; min-width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 10px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box;">
+                            <div>
+                                <span style="font-size: 0.8rem; text-decoration: line-through; opacity: 0.7; display: block; margin-bottom: 2px;">
+                                    Suma piese: <%= totalPachet.toFixed(2) %> RON
+                                </span>
+                                <span style="font-size: 1.4rem; font-weight: 800; display: block; color: #fff;">
+                                    <%= pretFinalPachet %> RON
+                                </span>
+                                <span style="font-size: 0.85rem; font-weight: bold; color: #d4af37; display: block;">
+                                    Preț Pachet Special (-<%= reducerePachet %>%)
+                                </span>
+                            </div>
+                            
+                            <button class="btn-colectie-pachet" data-set-id="<%= pachet.id %>" style="background: #d4af37; color: #4a2c2a; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; box-sizing: border-box;">
+                                <i class="fa-solid fa-gift"></i> Adaugă Pachet Complet
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+<% } %>
+    <section class="produse-similare">
+        <h3>Produse similare din categoria <%= prod.categorie %></h3>
+        <div class="container-similare">
+            <% if (locals.similare && similare.length > 0) { %>
+                <% for(let sim of similare) { %>
+                    <div class="card-similar">
+                        <a href="/produs/<%= sim.id %>" class="link-similar">
+                            <div class="imagine-patrata">
+                                <img src="/resurse/imagini/produse/prod<%= sim.id %>/1.webp" alt="<%= sim.nume %>">
+                            </div>
+                            <p class="nume-similar"><%= sim.nume %></p>
+                        </a>
+                        <p class="pret-similar"><b><%= sim.pret %> RON</b></p>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </section>
+
+    <div class="footer-plansa">
+        <span>Listat: <%- formateazaData(prod.data_adaugare) %></span>
+        <span>Autentic Acoustic Avenue</span>
+    </div>
+</div>
+</main>
+
+    <%- include("../fragmente/comparare") %>
+    <script src="/resurse/js/comparare.js" defer></script>
+    <%- include('../fragmente/footer.ejs') %>
+</body>
+</html>

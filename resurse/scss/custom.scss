@@ -21,12 +21,20 @@ $grid-breakpoints: (
   xxl: 1400px
 );
 
-$custom-primary: #8b4513;
+$custom-primary: #4a2c2a;
 $custom-secondary: #d4af37;
 $custom-dark-bg: #1a1a1a;
 
 $btn-link-color: $custom-secondary;
-$form-check-input-checked-color: $custom-primary;
+$btn-border-width: 3px; 
+$btn-border-radius: $border-radius;
+
+$form-range-thumb-width: 1.5rem; 
+$form-range-thumb-height: 1.5rem;
+$form-range-thumb-bg: $custom-secondary;
+$form-range-thumb-active-bg: darken($custom-secondary, 10%);
+$form-range-track-bg: #e9ecef;
+$form-range-thumb-bg: $custom-primary;
 
 $theme-colors: (
   "primary":    $custom-primary,
@@ -51,4 +59,10 @@ body {
 
 .btn:focus {
     box-shadow: 0 0 0 0.25rem rgba($custom-secondary, 0.5);
+}
+
+@include media-breakpoint-down(sm) {
+    .text-buton {
+        display: none;
+    }
 }

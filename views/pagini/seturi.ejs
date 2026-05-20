@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Acoustic Avenue</title>
+    <meta name="description" content="Acoustic Avenue - Magazin de instrumente muzicale și echipamente audio profesionale.">
+    <meta name="keywords" content="Acoustic Avenue, instrumente muzicale, magazin muzica, chitara, pian, tobe, saxofon, showroom Acoustic Avenue, orar showroom Acoustic Avenue">
+    
+  <%- include("../fragmente/head.ejs") %>
+  </head>
+  <body>
+    <%- include("../fragmente/header.ejs") %>
+<main class="container-seturi" style="max-width: 1200px; margin: 40px auto; padding: 20px; font-family: sans-serif;">
+    <h1 style="color: #4a2c2a; text-align: center; font-weight: 800; margin-bottom: 40px; font-family: 'Georgia', serif;">
+        Pachete și Seturi Speciale
+    </h1>
+
+    <div class="grid-seturi" style="display: grid; grid-template-columns: 1fr; gap: 40px;">
+        <% for (let set of seturi) { %>
+            <div class="card-set" style="background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                
+                <h2 style="color: #4a2c2a; margin-top: 0; font-family: 'Georgia', serif; font-size: 1.6rem; font-weight: 700;">
+                    <%= set.nume %>
+                </h2>
+                <p style="color: #666; font-style: italic; margin-bottom: 25px; font-size: 0.95rem;">
+                    <%= set.descriere %>
+                </p>
+                
+                <h4 style="color: #4a2c2a; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px;">
+                    Componentele setului:
+                </h4>
+
+                <div style="display: flex; flex-direction: column; gap: 25px; width: 100%;">
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; width: 100%;">
+                        <% 
+                            let sumaPreturi = 0; 
+                            let n = set.produse.length;
+                        %>
+                        <% for (let prod of set.produse) { %>
+                            <% sumaPreturi += parseFloat(prod.pret); %>
+                            
+                            <div class="produs-mic-set" style="width: 100%; border: 1px solid #eee; padding: 15px; border-radius: 8px; background: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; min-height: 320px;">
+                                <a href="/produs/<%= prod.id %>" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                    
+                                    <div style="width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; background: #fff; overflow: hidden;">
+                                        <img src="/resurse/imagini/produse/prod<%= prod.id %>/1.webp" 
+                                             alt="<%= prod.nume %>"
+                                             style="max-width: 100%; max-height: 100%; object-fit: contain;"
+                                             onerror="this.onerror=null; this.src='/resurse/imagini/produs-placeholder.webp';">
+                                    </div>
+                                    
+                                    <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start;">
+                                        <p style="font-size: 0.95rem; font-weight: bold; color: #4a2c2a; margin: 0 0 8px 0; line-height: 1.4; text-align: center;">
+                                            <%= prod.nume %>
+                                        </p>
+                                    </div>
+                                </a>
+
+                                <div style="margin-top: auto; text-align: center; width: 100%;">
+                                    <span style="color: #777; font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 8px;">
+                                        <%= prod.pret %> RON
+                                    </span>
+                                    <button class="btn-colectie" data-id="<%= prod.id %>" style="background: #4a2c2a; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; box-sizing: border-box;">
+                                        <i class="fa-solid fa-cart-plus"></i> Adaugă Produs
+                                    </button>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <% 
+                        let procentReducere = Math.min(5, n) * 5; 
+                        let pretFinalSet = (sumaPreturi * (1 - procentReducere / 100)).toFixed(2);
+                    %>
+                    
+                    <div style="align-self: flex-end; text-align: right; background: #4a2c2a; color: white; padding: 15px 25px; border-radius: 8px; min-width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 10px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box;">
+                        <div>
+                            <span style="font-size: 0.8rem; text-decoration: line-through; opacity: 0.7; display: block; margin-bottom: 2px;">
+                                Preț piese separat: <%= sumaPreturi.toFixed(2) %> RON
+                            </span>
+                            <span style="font-size: 1.4rem; font-weight: 800; display: block; letter-spacing: 0.5px; color: #fff;">
+                                <%= pretFinalSet %> RON
+                            </span>
+                            <span style="font-size: 0.85rem; font-weight: bold; color: #d4af37; display: block;">
+                                Reducere Pachet (-<%= procentReducere %>%)
+                            </span>
+                        </div>
+                        
+                        <button class="btn-colectie-pachet" data-set-id="<%= set.id %>" style="background: #d4af37; color: #4a2c2a; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; box-sizing: border-box;">
+                            <i class="fa-solid fa-gift"></i> Adaugă Pachet Complet
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../fragmente/footer.ejs') %>
+    <script src="/resurse/js/produse.js" defer></script>
+</body>
+</html>

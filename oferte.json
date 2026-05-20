@@ -1,0 +1,28 @@
+{
+    "oferte": [
+        {
+            "categorie": "percutie",
+            "data-incepere": "2026-05-19T12:42:01.083Z",
+            "data-finalizare": "2026-05-19T12:44:01.083Z",
+            "reducere": 10
+        },
+        {
+            "categorie": "audio_video",
+            "data-incepere": "2026-05-19T12:40:34.781Z",
+            "data-finalizare": "2026-05-19T12:42:34.781Z",
+            "reducere": 45
+        },
+        {
+            "categorie": "corzi",
+            "data-incepere": "2026-05-19T12:38:34.777Z",
+            "data-finalizare": "2026-05-19T12:40:34.777Z",
+            "reducere": 10
+        },
+        {
+            "categorie": "suflat",
+            "data-incepere": "2026-05-19T12:36:34.774Z",
+            "data-finalizare": "2026-05-19T12:38:34.774Z",
+            "reducere": 20
+        }
+    ]
+}

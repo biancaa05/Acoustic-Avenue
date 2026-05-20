@@ -214,16 +214,16 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+ @media screen and (max-width: 900px) {
     #tab-orar {
-        border: none; /* Eliminăm bordura exterioară a tabelului */
+        border: none;
 
         thead {
-            display: none; /* Ascundem capul tabelului pe ecrane mici */
+            display: none;
         }
 
         tr {
-            display: block; /* Rândul nu mai e linie orizontală, ci un container bloc */
+            display: block;
             margin-bottom: 20px;
             border: 2px solid var(--gold);
             border-radius: 10px;
@@ -232,18 +232,17 @@
         }
 
         td {
-            display: block; /* Celula devine rând în interiorul blocului */
-            text-align: right; /* Mutăm valoarea în dreapta */
-            padding-left: 50%; /* Lăsăm loc în stânga pentru etichetă */
+            display: block;
+            text-align: right;
+            padding-left: 50%;
             position: relative;
             border: none;
             border-bottom: 1px solid var(--crem);
             min-height: 45px;
             background-color: white;
 
-            /* Generăm eticheta în stânga celulei */
             &::before {
-                content: attr(data-label); /* Preia textul din data-label */
+                content: attr(data-label);
                 position: absolute;
                 left: 15px;
                 width: 40%;
@@ -267,7 +266,7 @@
             color: var(--gold);
             font-weight: bold;
             
-            &::before { content: ""; } /* Nu punem etichetă pe rândul de footer */
+            &::before { content: ""; }
         }
     }
-}
+} 

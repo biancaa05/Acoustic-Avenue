@@ -1,0 +1,71 @@
+<section id="container-produse" class="grid-produse">
+            <% if (produse && produse.length > 0) { %>
+                <% for (let prod of produse) { %>
+                    <article id="ent<%= prod.id %>" 
+                        class="produs <%= prod.categorie %>"
+                        data-id="<%= prod.id %>">
+                        
+                        <h3 class="nume-produs">
+                            <a href="/produs/<%= prod.id %>"><%= prod.nume %></a>
+                        </h3>
+                        
+                        <div class="tabel-si-imagine">
+                            <table class="tabel-specificatii">
+                                <thead>
+                                    <tr>
+                                        <th>Preț</th>
+                                        <th>Expertiză</th>
+                                        <th>Materiale</th>
+                                        <th>Dată Ofertă</th>
+                                        <th>Garanție</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="val-pret"><%= prod.pret %> RON</td>
+                                        <td class="val-expertiza"><%= prod.nivel_expertiza %></td>
+                                        <td class="val-materiale"><%- prod.materiale.replace(/[,/]/g, '<br>') %></td>
+                                        <td>
+                                            <time datetime="<%= prod.data_adaugare %>">
+                                                <%- formateazaData(prod.data_adaugare).replace(/\//g, '/<wbr>') %>
+                                            </time>
+                                        </td>
+                                        <td class="val-garantie"><%= prod.are_garantie_extinsa ? 'Da' : 'Nu' %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <img 
+                            src="/resurse/imagini/produse/prod<%= prod.id %>/1.webp"
+                            alt="<%= prod.nume %>"
+                            class="img-produs"
+                            data-id="<%= prod.id %>"
+                            data-index="1">
+                        </div>
+
+                        <p class="descriere-produs">
+                            <%= prod.descriere || 'Descriere indisponibilă.' %>
+                        </p>
+                        
+                        <p class="categorie-text">
+                            Categorie: <span><%= prod.categorie %></span>
+                        </p>
+
+                        <div class="controale-produs">
+                            <button class="btn-pin" title="Păstrează produsul (Pin) - nu va dispărea la filtrare">
+                                <i class="bi bi-pin-angle"></i>
+                            </button>
+                            <button class="btn-ascunde" title="Ascunde temporar (va reapărea la următorul filtru/sort)">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                            <button class="btn-exclude" title="Șterge din listă pe durata sesiunii (sessionStorage)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                        
+                    </article>
+                <% } %>
+            <% } else { %>
+                <p class="mesaj-lipsa">Nu am găsit produse în această categorie.</p>
+            <% } %>
+        </section>

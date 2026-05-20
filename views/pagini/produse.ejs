@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produse - Acoustic Avenue</title>
+    <%- include('../fragmente/head.ejs') %>
+</head>
+<body>
+    <%- include('../fragmente/header.ejs') %>
+    
+    <main class="pagina-produse">
+        <h2 class="titlu-pagina">Instrumente Muzicale</h2>
+        <p class="subtitlu-pagina">Găsește instrumentul perfect pentru tine</p>
+        <div class="zona-link-seturi" style="margin: 30px 0; text-align: center; width: 100%;">
+            <a href="/seturi" class="btn-pagina-seturi" style="
+                display: inline-block;
+                background-color: #4a2c2a; 
+                color: #ffffff; 
+                text-decoration: none; 
+                padding: 12px 25px; 
+                border-radius: 6px; 
+                font-weight: bold;
+                font-size: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                transition: all 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#d4af37'; this.style.color='#4a2c2a'; this.style.transform='scale(1.05)';" 
+            onmouseout="this.style.backgroundColor='#4a2c2a'; this.style.color='#ffffff'; this.style.transform='scale(1)';">
+                <i class="fa-solid fa-boxes-packing" style="margin-right: 8px;"></i> Vezi Pachete & Seturi Speciale
+            </a>
+        </div>
+         
+        <section id="zona-filtre" class="bara-filtre-container">
+            <div class="bara-filtre">
+                
+                <input type="text" id="inp-nume" class="filtru-control input-cautare" placeholder="Nume instrument...">
+
+                <input type="text" list="lista-categorii" id="inp-categorie" class="filtru-control" placeholder="Categorie...">
+                    <datalist id="lista-categorii">
+                        <% for(let cat of categoriiMeniu) { %>
+                            <option value="<%= cat %>">
+                        <% } %>
+                    </datalist>
+
+                <select id="inp-expertiza" class="filtru-control">
+                    <option value="oricare">Nivel: Oricare</option>
+                    <option value="incepator">Începător</option>
+                    <option value="mediu">Mediu</option>
+                    <option value="avansat">Avansat</option>
+                </select>
+
+                <details class="filtru-dropdown">
+                    <summary class="filtru-control">Descriere ▼</summary>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Descriere" id="inp-descriere" style="height: 100px"></textarea>
+                        <label for="inp-descriere">Cuvinte cheie (descriere)</label>
+                    </div>
+                </details>
+
+                <% 
+                    let listaPreturi = produse.map(p => p.pret);
+                    let pretMinBD = Math.floor(Math.min(...listaPreturi));
+                    let pretMaxBD = Math.ceil(Math.max(...listaPreturi));
+                    %>
+
+                <div class="filtru-control" style="display: flex; align-items: center; gap: 10px;">
+                    <label for="inp-pret" style="font-weight: 600; margin: 0;">Preț Maxim:</label>
+                    <span><%= pretMinBD %></span> 
+
+                    <input type="range" 
+                        id="inp-pret" 
+                        min="<%= pretMinBD %>" 
+                        max="<%= pretMaxBD %>" 
+                        step="10" 
+                        value="<%= pretMaxBD %>">
+                    <span>
+                        <%= pretMaxBD %> 
+                        (<span id="valoare-range"><%= pretMaxBD %></span>)
+                    </span>
+                </div>
+
+                <details class="filtru-dropdown">
+                    <summary class="filtru-control">Culoare ▼</summary>
+                    <div class="dropdown-content">
+                        <label>Ține CTRL pt. selecție multiplă</label>
+                        <select id="inp-culoare" multiple size="4">
+                            <option value="toate" selected>Toate</option>
+                            <option value="negru">Negru</option>
+                            <option value="alb">Alb</option>
+                            <option value="maro">Maro</option>
+                            <option value="auriu">Auriu</option>
+                        </select>
+                    </div>
+                </details>
+
+                <details class="filtru-dropdown">
+                    <summary class="filtru-control">Materiale ▼</summary>
+                    <div class="dropdown-content">
+                        <label><input type="checkbox" name="material" value="lemn" checked> Lemn</label>
+                        <label><input type="checkbox" name="material" value="metal" checked> Metal/Alamă</label>
+                        <label><input type="checkbox" name="material" value="plastic" checked> Plastic</label>
+                        <label><input type="checkbox" name="material" value="electronice" checked> Electronice</label>
+                    </div>
+                </details>
+
+                <details class="filtru-dropdown">
+                    <summary class="filtru-control">Garanție ▼</summary>
+                    <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="gr_garantie" id="rad1" value="toate" checked>
+                        <label class="btn btn-outline-primary" for="rad1">Toate</label>
+
+                        <input type="radio" class="btn-check" name="gr_garantie" id="rad2" value="da">
+                        <label class="btn btn-outline-primary" for="rad2">Cu Garanție</label>
+                    </div>
+                </details>
+
+                <details id="btn-sortare" class="filtru-dropdown">
+    <summary class="filtru-control" style="height: 45px; display: inline-flex; align-items: center; gap: 8px;">
+        <i class="bi bi-sort-alpha-down"></i> Sortare ▼
+    </summary>
+    <div class="dropdown-content">
+        <label style="font-size: 0.85rem; color: #888;">Cheia 1</label>
+        <select id="sort1" class="form-control">
+            <option value="pret">Preț</option>
+            <option value="nume">Nume</option>
+            <option value="categorie">Categorie</option>
+            <option value="materiale">Nr. Materiale</option>
+            <option value="expertiza">Expertiză</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: #888;">Cheia 2</label>
+        <select id="sort2" class="form-control">
+            <option value="pret">Preț</option>
+            <option value="nume">Nume</option>
+            <option value="categorie">Categorie</option>
+            <option value="materiale">Nr. Materiale</option>
+            <option value="expertiza">Expertiză</option>
+        </select>
+
+        <div style="display: flex; gap: 8px; margin-top: 5px;">
+            <button id="btn-sort-asc" class="btn-dropdown" style="flex: 1; text-align: center;">
+                <i class="bi bi-sort-up"></i> Crescător
+            </button>
+            <button id="btn-sort-desc" class="btn-dropdown" style="flex: 1; text-align: center;">
+                <i class="bi bi-sort-down"></i> Descrescător
+            </button>
+        </div>
+    </div>
+</details>
+
+                <button id="btn-filtrare" class="btn btn-primary">
+                    <i class="bi bi-filter"></i> 
+                    <span class="text-buton">Filtrează</span>
+                </button>
+
+                <button id="btn-reset" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-counterclockwise"></i> 
+                    <span class="text-buton">Resetează</span>
+                </button>
+                <button id="btn-calcul" class="btn btn-info">
+                    <i class="bi bi-calculation"></i> 
+                    <span class="text-buton">Calculează</span>
+                </button>
+                <button id="btn-server-fetch" class="btn btn-warning">
+                    <i class="bi bi-cpu"></i> 
+                    <span class="text-buton">Filtrare Server (Fetch)</span>
+                </button>
+            </div>
+        </section>
+
+        <p id="mesaj-numar-produse" style="font-weight: bold; margin-bottom: 15px; color: #4a2c2a;">
+            Produse afișate: <span id="numar-produse"><%= produse.length %></span>
+        </p>
+
+        <section id="container-produse" class="grid-produse">
+            <%
+                let minPreturi = {};
+                if (produse && produse.length > 0) {
+                    produse.forEach(p => {
+                        if (!minPreturi[p.categorie] || p.pret < minPreturi[p.categorie]) {
+                            minPreturi[p.categorie] = p.pret;
+                        }
+                    });
+                }
+            %>
+
+            <% if (produse && produse.length > 0) { %>
+                <% for (let prod of produse) { %>
+                    <article id="ent<%= prod.id %>" 
+                        class="produs <%= prod.categorie %>"
+                        data-id="<%= prod.id %>"
+                        data-culoare="<%= prod.culoare || '' %>">
+
+                        <h3 class="nume-produs">
+                            <a href="/produs/<%= prod.id %>"><%= prod.nume %></a>
+                        </h3>
+
+                        <% if (prod.pret === minPreturi[prod.categorie]) { %>
+                            <div class="insigna-ieftin" style="text-align: right; margin-top: -10px; margin-bottom: 10px; padding-right: 10px;">
+                                <span style="background: #d4af37; color: #4a2c2a; padding: 2px 10px; font-weight: bold; font-size: 0.75rem; border: 1px solid #4a2c2a; border-radius: 4px; display: inline-block;">
+                                    <i class="fa-solid fa-star"></i> CEL MAI IEFTIN <%= prod.categorie.toUpperCase() %>
+                                </span>
+                            </div>
+                        <% } %>
+
+                        <% 
+                            let T = 7 * 24 * 60 * 60 * 1000;
+                            let acum = new Date();
+                            let dataProdus = new Date(prod.data_adaugare);
+                            let esteNou = (acum - dataProdus) <= T;
+                        %>
+
+                        <% if (esteNou) { %>
+                            <span class="insigna-nou" style="
+                                background-color: #d4af37; 
+                                color: #4a2c2a; 
+                                font-weight: bold; 
+                                font-size: 0.75rem; 
+                                padding: 4px 8px; 
+                                border-radius: 3px; 
+                                text-transform: uppercase;
+                                display: inline-block;
+                                margin-bottom: 8px;
+                                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                            ">
+                                🔥 NOU
+                            </span>
+                        <% } %>
+                        
+                        <div class="tabel-si-imagine">
+                            <table class="tabel-specificatii">
+                                <thead>
+                                    <tr>
+                                        <th>Preț</th>
+                                        <th>Expertiză</th>
+                                        <th>Materiale</th>
+                                        <th>Dată Ofertă</th>
+                                        <th>Garanție</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="val-pret">
+                                            <% if (locals.ofertaCurenta && prod.categorie == ofertaCurenta.categorie) { %>
+                                                <div class="pret-oferta">
+                                                    <span style="text-decoration: line-through; color: #888; font-size: 0.85em;">
+                                                        <%= prod.pret %>
+                                                    </span>
+                                                    <br>
+                                                    <span style="color: #4a2c2a; font-weight: bold;">
+                                                        <% let pretRedus = (prod.pret * (1 - ofertaCurenta.reducere / 100)).toFixed(2); %>
+                                                        <%= pretRedus %> RON
+                                                    </span>
+                                                    <span class="badge bg-danger" style="font-size: 0.7em;">-<%= ofertaCurenta.reducere %>%</span>
+                                                </div>
+                                            <% } else { %>
+                                                <%= prod.pret %> RON
+                                            <% } %>
+                                        </td>
+                                        <td class="val-expertiza"><%= prod.nivel_expertiza %></td>
+                                        <td class="val-materiale"><%- prod.materiale.replace(/[,/]/g, '<br>') %></td>
+                                        <td>
+                                            <time datetime="<%= prod.data_adaugare %>">
+                                                <%- formateazaData(prod.data_adaugare).replace(/\//g, '/<wbr>') %>
+                                            </time>
+                                        </td>
+                                        <td class="val-garantie"><%= prod.are_garantie_extinsa ? 'Da' : 'Nu' %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <img 
+                                src="/resurse/imagini/produse/prod<%= prod.id %>/1.webp"
+                                alt="<%= prod.nume %>"
+                                class="img-produs"
+                                data-id="<%= prod.id %>"
+                                data-index="1">
+                        </div>
+
+                        <p class="descriere-produs">
+                            <%= prod.descriere || 'Descriere indisponibilă.' %>
+                        </p>
+                        
+                        <p class="categorie-text">
+                            Categorie: <span><%= prod.categorie %></span>
+                        </p>
+
+                        <div class="controale-produs">
+                            <button class="btn-pin" title="Păstrează produsul (Pin) - nu va dispărea la filtrare">
+                                <i class="bi bi-pin-angle"></i>
+                            </button>
+                            <button class="btn-ascunde" title="Ascunde temporar (va reapărea la următorul filtru/sort)">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                            <button class="btn-exclude" title="Șterge din listă pe durata sesiunii (sessionStorage)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <button class="btn-compara" data-id="<%= prod.id %>" data-nume="<%= prod.nume %>" onclick="adaugaLaComparare(this)">
+                                Compară
+                            </button>
+                        </div>
+                        
+                    </article>
+                <% } %>
+            <% } else { %>
+                <p class="mesaj-lipsa">Nu am găsit produse în această categorie.</p>
+            <% } %>
+        </section>
+    
+        <div id="container-paginare" class="d-flex justify-content-center gap-2 my-4"></div>
+
+        <div class="container-inapoi">
+             <a href="/" class="link-inapoi">Înapoi la pagina principală</a>
+        </div>
+
+        <div id="modal-produs" class="modal">
+    <div class="modal-continut">
+        <span id="inchide-modal" class="buton-inchidere">&times;</span>
+        <div id="detalii-modal">
+            </div>
+    </div>
+</div>
+    </main>
+
+    <%- include("../fragmente/comparare") %>
+    <script src="/resurse/js/comparare.js" defer></script>
+    <%- include('../fragmente/footer.ejs') %>
+    <script src="/resurse/js/produse.js" defer></script>
+
+</body>
+</html>

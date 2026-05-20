@@ -12,7 +12,7 @@
         <h1 class="titlu_logo">Acoustic Avenue</h1>
       </div>
       
-
+  <p class="banner-proiect">Acesta este un proiect școlar!</p>
   <nav id="nav-principal">
   <ul>
     <li>
@@ -24,65 +24,25 @@
         <li><a href="#zona2">Program</a></li>
       </ul>
     </li>
-    <li>
-      <a href="/shop"><i class="fa-solid fa-cart-shopping"></i> <span>Shop</span></a>
-      <ul>
-        <li>
-          <a href="/shop/corzi">Instrumente cu corzi</a>
-          <ul>
-            <li><a href="/shop/corzi/chit_ac">Chitare acustice</a></li>
-            <li><a href="/shop/corzi/chit_el">Chitare electrice</a></li>
-            <li><a href="/shop/corzi/bass">Chitare Bass</a></li>
-            <li><a href="/shop/corzi/viori">Viori & Violoncele</a></li>
-            <li><a href="/shop/corzi/mand_uku">Mandoline & Ukulele</a></li>
-            <li><a href="/shop/corzi/acc_corzi">Accesorii (corzi, huse)</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="/shop/clape">Piane și Clape</a>
-          <ul>
-            <li><a href="/shop/clape/pian_dig">Piane digitale</a></li>
-            <li><a href="/shop/clape/pian_ac">Pianine acustice</a></li>
-            <li><a href="/shop/clape/sint">Sintetizatoare</a></li>
-            <li><a href="/shop/clape/midi">MIDI Controllers</a></li>
-            <li><a href="/shop/clape/acc_clape">Accesorii clape</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="/shop/percutie">Percuție</a>
-          <ul>
-            <li><a href="/shop/percutie/tobe_ac">Tobe acustice</a></li>
-            <li><a href="/shop/percutie/tobe_el">Tobe electronice</a></li>
-            <li><a href="/shop/percutie/cinele">Cinele</a></li>
-            <li><a href="/shop/percutie/perc_mana">Percuție de mână</a></li>
-            <li><a href="/shop/percutie/hardware_tobe">Hardware tobe</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="/shop/suflat">Instrumente de suflat</a>
-          <ul>
-            <li><a href="/shop/suflat/saxofon">Saxofoane</a></li>
-            <li><a href="/shop/suflat/trompete">Trompete</a></li>
-            <li><a href="/shop/suflat/flaut_clarinet">Flaute & Clarinete</a></li>
-            <li><a href="/shop/suflat/acc_suflat">Accesorii suflat</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="/shop/audio">Pro Audio & Studio</a>
-          <ul>
-            <li><a href="/shop/audio/interf_audio">Interfețe audio</a></li>
-            <li><a href="/shop/audio/microfon">Microfoane</a></li>
-            <li><a href="/shop/audio/monit_studio">Monitoare de studio</a></li>
-            <li><a href="/shop/audio/casti">Căști profesionale</a></li>
-            <li><a href="/shop/audio/dj_sonor">DJ & Sonorizare</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <a href="/produse"><i class="fa-solid fa-cart-shopping"></i> <span>Shop</span></a>
+        <ul>
+          <li><a href="/produse">Toate instrumentele</a></li>
+          
+          <% if (locals.categoriiMeniu) { %>
+            <% for(let cat of categoriiMeniu) { %>
+              <li>
+                <a href="/produse?tip=<%= cat %>">
+                  <%= cat.charAt(0).toUpperCase() + cat.slice(1).replace('_', ' ') %>
+                </a>
+              </li>
+            <% } %>
+          <% } %>
+        </ul>
+      </li>
     <li>
       <a href="/galerie"><i class="fa-solid fa-images"></i> <span>Galerie</span></a>
     </li>
-
     <li>
       <a href="/cont"><i class="fa-solid fa-user"></i> <span>Contul Meu</span></a>
     </li>

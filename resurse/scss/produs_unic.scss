@@ -1,0 +1,200 @@
+$mahon: #4a2c2a;
+$auriu: #d4af37;
+
+.plansa-produs {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+    // ACEASTA ESTE MODIFICAREA PRINCIPALĂ
+    .sectiune-superioara {
+        display: grid;
+        grid-template-columns: 1fr 1fr; // Două coloane egale
+        gap: 40px; // Spațiu între poză și text
+        align-items: start;
+
+        @media (max-width: 800px) {
+            grid-template-columns: 1fr; // Pe ecrane mici revine la o coloană
+        }
+    }
+}
+
+.container-foto {
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+.detalii-principale {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .nume-mare-body {
+        font-family: 'Georgia', serif; // Font elegant pentru titlu
+        color: $mahon;
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    .categorie-badge {
+        display: inline-block;
+        background: #f0f0f0;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        width: fit-content;
+    }
+}
+
+.plansa-pret {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+
+    .valoare-pret {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: $mahon;
+    }
+
+    .btn-colectie {
+        background: $mahon;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        
+        &:hover {
+            background: $auriu;
+        }
+    }
+}
+
+.panou-info {
+    margin-top: 20px;
+    border-left: 4px solid $auriu;
+    padding-left: 20px;
+
+    h3 {
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: $mahon;
+    }
+
+    .descriere-text {
+        line-height: 1.6;
+        color: #333;
+    }
+}
+
+// Grid-ul de specificații
+.grid-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    .item-spec {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed #ddd;
+        
+        strong { color: $mahon; }
+        span { color: $gri-text; }
+    }
+}
+
+.produse-similare {
+    margin: 50px 0;
+    width: 100%;
+    
+    h3 {
+        text-align: center;
+        color: $mahon;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        font-weight: 800;
+    }
+
+    .container-similare {
+        display: flex;
+        justify-content: center; // Centrează cardurile pe orizontală
+        align-items: flex-start;
+        gap: 30px; // Spațiu între carduri
+        flex-wrap: wrap; // Dacă sunt prea multe, trec pe rândul următor
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card-similar {
+        width: 250px; // Lățime fixă
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 15px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .imagine-patrata {
+            width: 100%;
+            aspect-ratio: 1 / 1; // FORȚEAZĂ FORMATUL PĂTRAT
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 5px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; // Imaginea se vede întreagă în pătrat
+            }
+        }
+
+        .nume-similar {
+            text-decoration: none;
+            color: $mahon;
+            font-weight: 600;
+            height: 40px; // Înălțime fixă pentru nume ca să fie aliniate butoanele
+            overflow: hidden;
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .pret-similar {
+            color: $auriu;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .link-similar {
+            text-decoration: none;
+        }
+    }
+}

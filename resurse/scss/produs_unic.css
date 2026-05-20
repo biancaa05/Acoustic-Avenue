@@ -1,0 +1,205 @@
+@charset "UTF-8";
+.pagina-produs-fundal {
+  padding: 50px 20px;
+  background-color: #f4f1ea;
+  background-image: radial-gradient(#dcd7c9 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.plansa-produs {
+  background: #ffffff;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(74, 37, 17, 0.08);
+  border: 1px solid #f0ede4;
+  padding: 30px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.plansa-produs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--gold), var(--mahon), var(--gold));
+  border-radius: 15px 15px 0 0;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL FIX (IMPORTANT)
+========================= */
+.sectiune-superioara {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* STÂNGA - imagine */
+.container-foto {
+  flex: 1.3;
+  background: #fdfdfd;
+  border: 1px solid #f0f0f0;
+  padding: 15px;
+}
+
+.container-foto img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+/* DREAPTA - info */
+.detalii-principale {
+  flex: 1;
+}
+
+/* =========================
+   HEADER PRODUS
+========================= */
+.header-produs-body {
+  margin-bottom: 20px;
+}
+
+.header-produs-body .nume-mare-body {
+  font-size: 2rem;
+  color: var(--mahon);
+  font-family: "Merriweather", serif;
+  margin: 5px 0;
+}
+
+/* =========================
+   PREȚ + BUTON (FIX ALIGN)
+========================= */
+.plansa-pret {
+  background: #fafafa;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.plansa-pret .valoare-pret {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--mahon);
+}
+
+.plansa-pret .valoare-pret small {
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+/* =========================
+   BUTON ADAUGĂ
+========================= */
+.btn-colectie {
+  width: auto;
+  min-width: 160px;
+}
+
+/* =========================
+   SECTIUNI INFO
+========================= */
+.panou-info {
+  margin-bottom: 25px;
+}
+
+.panou-info h3 {
+  font-size: 1rem;
+  color: var(--mahon);
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.panou-info .descriere-text {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* =========================
+   SPECIFICAȚII
+========================= */
+.sectiune-inferioara-linie {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #f0ede4;
+}
+
+.grid-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.item-spec {
+  background: #fdfbf7;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* =========================
+   MATERIALE
+========================= */
+.bulina-material {
+  display: inline-block;
+  background: #f8f6f0;
+  border: 1px solid #e0ddd5;
+  color: var(--mahon);
+  padding: 6px 12px;
+  margin: 3px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer-plansa {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #bbb;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .sectiune-superioara {
+    flex-direction: column;
+  }
+  .container-foto {
+    width: 100%;
+  }
+  .sectiune-inferioara-linie {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=produs_unic.css.map */

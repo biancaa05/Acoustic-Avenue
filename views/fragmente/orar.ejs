@@ -1,0 +1,57 @@
+<div id="modal-orar" class="modal-orar-ecran">
+    <div class="modal-orar-continut">
+        
+        <span onclick="inchideOrar()" class="buton-inchidere-orar">&times;</span>
+        
+        <h3><i class="fa-solid fa-clock"></i> Orar de Funcționare</h3>
+        
+        <table class="tabel-orar">
+            <thead>
+                <tr>
+                    <th>Zi</th>
+                    <th>Interval Orar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rand-orar" data-zi="1">
+                    <td>Luni</td>
+                    <td>09:00 - 18:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="2">
+                    <td>Marți</td>
+                    <td>09:00 - 18:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="3">
+                    <td>Miercuri</td>
+                    <td>09:00 - 18:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="4">
+                    <td>Joi</td>
+                    <td>09:00 - 18:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="5">
+                    <td>Vineri</td>
+                    <td>09:00 - 16:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="6">
+                    <td>Sâmbătă</td>
+                    <td>10:00 - 14:00</td>
+                </tr>
+                <tr class="rand-orar" data-zi="0">
+                    <td>Duminică</td>
+                    <td class="text-inchis">ÎNCHIS</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div id="stare-firma">
+            Se calculează starea...
+        </div>
+        
+        <p class="text-notificare-orar">
+            Fereastra se va închide automat în 10 secunde.
+        </p>
+    </div>
+</div>
+
+<script src="/resurse/js/orar.js" defer></script>

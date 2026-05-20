@@ -1,0 +1,429 @@
+@charset "UTF-8";
+#zona-filtre summary::before,
+#zona-filtre summary::after,
+#zona-filtre .btn-dropdown::before,
+#zona-filtre .btn-dropdown::after,
+#zona-filtre .btn-bara::before,
+#zona-filtre .btn-bara::after {
+  content: none !important;
+  display: none !important;
+  background-image: none !important;
+}
+#zona-filtre summary, #zona-filtre .btn-dropdown, #zona-filtre .filtru-control {
+  background-image: none !important;
+}
+#zona-filtre details {
+  outline: none !important;
+  border: none !important;
+}
+#zona-filtre summary.filtru-control {
+  outline: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+       appearance: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  border: 1px solid #eaeaea !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+}
+#zona-filtre summary.filtru-control:focus,
+#zona-filtre summary.filtru-control:active {
+  outline: none;
+  border: 1px solid var(--gold);
+  box-shadow: 0 5px 15px var(--mahon);
+}
+#zona-filtre .input-cautare {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b89531' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") !important;
+}
+
+.pagina-produse {
+  background: transparent;
+  padding: 60px 5%;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.pagina-produse * {
+  list-style-image: none !important;
+}
+.pagina-produse .titlu-pagina {
+  color: var(--mahon);
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+.pagina-produse .subtitlu-pagina {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 50px;
+  font-style: italic;
+}
+.pagina-produse .bara-filtre-container {
+  max-width: 1100px;
+  margin: 0 auto 50px auto;
+  position: relative;
+  z-index: 20;
+}
+.pagina-produse .bara-filtre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background-color: #ffffff; /* Alb solid pentru contrast mai bun */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Umbră fină pentru aspect premium */
+  border: 1px solid #f0ede4;
+}
+.pagina-produse {
+  /* Forțăm toate inputurile și selecturile să aibă o înălțime similară */
+}
+.pagina-produse .filtru-control {
+  height: 45px;
+  min-width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+.pagina-produse .filtru-control[style*="display: flex"] {
+  min-width: 400px !important;
+  padding: 0 20px;
+  display: flex !important;
+  align-items: center;
+}
+.pagina-produse .filtru-dropdown {
+  display: inline-block;
+  vertical-align: middle; /* Aceasta este cheia pentru alinierea verticală */
+  margin: 0;
+  padding: 0;
+}
+.pagina-produse {
+  /* Eliminăm săgeata implicită a browserului (triunghiul mic) */
+}
+.pagina-produse .filtru-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+.pagina-produse .filtru-dropdown summary {
+  list-style: none;
+}
+.pagina-produse .dropdown-content {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  min-width: 250px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid var(--mahon);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pagina-produse {
+  /* Stil pentru butoanele propriu-zise de Asc/Desc */
+}
+.pagina-produse .btn-dropdown {
+  width: 100%;
+  padding: 12px 15px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: var(--mahon);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+}
+.pagina-produse {
+  /* Efect de hover pe opțiunile de sortare */
+}
+.pagina-produse .btn-dropdown:hover {
+  background-color: var(--light); /* Culoarea crem definită în custom.scss */
+  color: var(--custom-primary);
+  border-left: 4px solid var(--gold); /* Un accent auriu în stânga la hover */
+  padding-left: 11px; /* Ajustăm padding-ul din cauza bordurii noi */
+}
+.pagina-produse {
+  /* Adăugăm un mic separator între opțiuni dacă dorești */
+}
+.pagina-produse .btn-dropdown:not(:last-child) {
+  border-bottom: 1px solid #f0ede4;
+}
+.pagina-produse #inp-nume {
+  background-image: none !important; /* Scoate iconița Bootstrap implicită care se repetă */
+  background-color: white;
+}
+.pagina-produse {
+  /* Fix pentru culoarea slider-ului (bara) în Mahon */
+}
+.pagina-produse #inp-pret::-webkit-slider-runnable-track {
+  background-color: #ddd; /* Culoarea de fundal a barei */
+}
+.pagina-produse {
+  /* Dacă vrei ca partea "parcursă" a slider-ului să fie mahon (accent-color) */
+}
+.pagina-produse #inp-pret {
+  accent-color: var(--mahon); /* Forțează culoarea mahon pe bara și bulină în browserele moderne */
+  cursor: pointer;
+}
+.pagina-produse #btn-reset,
+.pagina-produse #btn-calcul,
+.pagina-produse .filtru-dropdown summary {
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Centrează textul și iconița în interior */
+  gap: 8px;
+  font-weight: bold;
+  background-color: white;
+  border: 2px solid var(--mahon); /* Folosește border explicit pentru consistență */
+  color: var(--mahon);
+  border-radius: 8px; /* Sau ce border-radius ai în custom.scss */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box; /* Previne mărirea butonului din cauza border-ului */
+}
+.pagina-produse #btn-reset:hover,
+.pagina-produse #btn-calcul:hover,
+.pagina-produse .filtru-dropdown summary:hover {
+  background-color: var(--mahon);
+  color: white;
+}
+.pagina-produse #btn-filtrare {
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  background-color: var(--gold);
+  color: white;
+  border-color: var(--gold);
+}
+.pagina-produse #btn-filtrare:hover {
+  background-color: var(--mahon);
+  color: white;
+  border-color: var(--mahon);
+}
+.pagina-produse .tabel-specificatii {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+}
+.pagina-produse .tabel-specificatii th {
+  background-color: var(--mahon);
+  color: white;
+  padding: 8px;
+  font-size: 0.8rem;
+}
+.pagina-produse .tabel-specificatii td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid var(--mahon);
+}
+.pagina-produse .grid-produse {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pagina-produse .produs {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px var(--mahon);
+  border: 1px solid var(--mahon);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+.pagina-produse .produs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--mahon), var(--gold));
+}
+.pagina-produse .produs:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+.pagina-produse .produs:hover .img-produs {
+  transform: scale(1.05);
+}
+.pagina-produse .produs .nume-produs {
+  color: var(--mahon);
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.pagina-produse .produs .tabel-si-imagine {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 35px;
+  align-items: center;
+}
+.pagina-produse .produs .img-produs {
+  width: 100%;
+  height: 220px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 15px;
+  border: 1px solid #eee;
+  transition: transform 0.5s ease;
+}
+.pagina-produse .produs .tabel-specificatii {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--mahon);
+}
+.pagina-produse .produs .tabel-specificatii th, .pagina-produse .produs .tabel-specificatii td {
+  padding: 15px;
+  text-align: center;
+  word-wrap: break-word;
+}
+.pagina-produse .produs .tabel-specificatii th {
+  background: var(--gold);
+  color: var(--mahon);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #eee;
+}
+.pagina-produse .produs .tabel-specificatii td {
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  color: var(--mahon);
+  font-weight: 500;
+}
+.pagina-produse .produs .tabel-specificatii .val-pret {
+  color: var(--mahon);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.pagina-produse .produs .descriere-produs {
+  margin-top: 30px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--mahon);
+  background: rgba(253, 250, 245, 0.7);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--gold);
+}
+.pagina-produse .produs .categorie-text {
+  margin-top: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #aaa;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+.pagina-produse .produs .categorie-text span {
+  background: var(--mahon);
+  color: white;
+  padding: 6px 15px;
+  border-radius: 30px;
+}
+.pagina-produse #valoare-range {
+  color: var(--mahon); /* Mahon */
+  font-weight: bold;
+}
+.pagina-produse {
+  /* Stil universal pentru mesajul de "lipsă rezultate" */
+}
+.pagina-produse #mesaj-nu-exista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 15px;
+  text-align: center;
+  font-family: var(--font-principal);
+  /* Folosim variabilele care se schimbă odată cu tema */
+  background-color: var(--fundal-sectiune);
+  color: var(--text-principal);
+  border: 2px dashed var(--culoare-accent);
+  transition: all 0.4s ease;
+  grid-column: 1/-1; /* Dacă folosești grid pentru produse */
+}
+.pagina-produse #mesaj-nu-exista i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--culoare-titlu); /* Iconița va fi auriu în Dark/Forest și Mahon în Light */
+}
+.pagina-produse #mesaj-nu-exista p {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: bold;
+}
+.pagina-produse {
+  /* Ajustare specifică pentru tema Forest pentru a arăta mai "organic" */
+}
+.pagina-produse body.forest #mesaj-nu-exista {
+  background-color: rgba(0, 0, 0, 0.2); /* Un fundal ușor transparent peste verdele închis */
+  border-style: dotted;
+}
+.pagina-produse {
+  /* Stil pentru butoanele mici de control */
+}
+.pagina-produse .controale-produs {
+  position: absolute; /* Opțional, le poți pune unde dorești */
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
+.pagina-produse .controale-produs button {
+  background: var(--fundal-pagina);
+  border: 1px solid var(--culoare-accent);
+  color: var(--text-principal);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+}
+.pagina-produse {
+  /* Starea de PIN activ (Cerința bonusului) */
+}
+.pagina-produse .produs.pin-activ {
+  border: 2px solid var(--gold) !important;
+  background-color: rgba(212, 175, 55, 0.1); /* O nuanță discretă de auriu pe fundal */
+}
+.pagina-produse .btn-pin.activ {
+  background-color: var(--gold) !important;
+  color: white !important;
+}
+.pagina-produse {
+  /* Tooltip nativ (title) va funcționa automat la hover */
+}
+@media (max-width: 850px) {
+  .pagina-produse .produs .tabel-si-imagine {
+    grid-template-columns: 1fr;
+  }
+  .pagina-produse .produs .img-produs {
+    height: 250px;
+  }
+  .pagina-produse .tabel-specificatii {
+    table-layout: auto !important;
+  }
+}/*# sourceMappingURL=produse.css.map */

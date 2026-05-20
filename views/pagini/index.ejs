@@ -77,6 +77,56 @@
               </figure>
             </div>
             <br>
+
+            <section class="sectiune-noutati" style="max-width: 1200px; margin: 60px auto; padding: 20px; font-family: sans-serif;">
+              <h2 style="color: #4a2c2a; text-align: center; font-family: 'Georgia', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px;">
+                  Noutăți în Magazin
+              </h2>
+              <p style="text-align: center; color: #666; font-style: italic; margin-bottom: 40px; font-size: 1rem;">
+                  Descoperă cele mai recente instrumente și accesorii adăugate în colecția noastră!
+              </p>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; width: 100%;">
+                  <% if (locals.produseNoiAcasa && produseNoiAcasa.length > 0) { %>
+                      <% for (let p of produseNoiAcasa) { %>
+                          
+                          <div class="card-noutate-acasa" style="border: 1px solid #eee; padding: 20px; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s;"
+                              onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.1)';"
+                              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';">
+                              
+                              <a href="/produs/<%= p.id %>" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                  
+                                  <div style="width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; background: #fff; overflow: hidden; position: relative;">
+                                      <img src="/resurse/imagini/produse/prod<%= p.id %>/1.webp" 
+                                          alt="<%= p.nume %>"
+                                          style="max-width: 100%; max-height: 100%; object-fit: contain;"
+                                          onerror="this.onerror=null; this.src='/resurse/imagini/produs-placeholder.webp';">
+                                      
+                                      <span style="position: absolute; top: 0; left: 0; background: #d4af37; color: #4a2c2a; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                          NOU
+                                      </span>
+                                  </div>
+                                  
+                                  <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
+                                      <h4 style="font-size: 1.05rem; font-weight: 700; color: #4a2c2a; margin: 0 0 10px 0; line-height: 1.4; height: 42px; overflow: hidden;">
+                                          <%= p.nume %>
+                                      </h4>
+                                      <span style="color: #d4af37; font-size: 1.2rem; font-weight: 800; display: block; margin-top: auto;">
+                                          <%= p.pret %> RON
+                                      </span>
+                                  </div>
+                              </a>
+                              
+                          </div>
+                          
+                      <% } %>
+                  <% } else { %>
+                      <div style="grid-column: 1 / -1; text-align: center; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc;">
+                          <p style="color: #777; margin: 0;">Momentan nu există produse noi marcate pe site.</p>
+                      </div>
+                  <% } %>
+              </div>
+          </section>
             <!--CERINTA 13 (a)-->
             <a href="https://www.guitarworld.com/gear/best-acoustic-guitars" target="_blank">Chitare recomandate de specialiști</a>
           </section>
@@ -404,48 +454,57 @@
           <h3>Statistici</h3>
           <p>Lorem ipsum dolor sit amet. Vizite astăzi: 120. Produse vândute: 5.</p>
         </section>
-        <section id="zona4" class="container my-5">
-  <div class="row">
-    <div class="col-12">
-      <h3 class="mb-4 border-bottom border-primary pb-2">Anunțuri & Oferte</h3>
-    </div>
-  </div>
+      <section id="zona4" class="container my-5">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h3 class="mb-4 sectiune-titlu-custom">ANUNȚURI & OFERTE</h3>
+          </div>
+        </div>
 
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="card h-100 border-primary shadow-sm">
-        <div class="card-header bg-primary text-white">
-          <i class="fa-solid fa-truck-fast"></i> Promoție Livrare
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Livrăm gratuit!</h5>
-          <p class="card-text">Pentru orice comandă care depășește suma de <strong>500 RON</strong>, transportul este suportat de noi. Profită acum!</p>
-          <a href="/produse" class="btn btn-outline-primary btn-sm">Vezi Produse</a>
-        </div>
-      </div>
-    </div>
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="card card-personalizat shadow-sm">
+              <div class="card-header-custom">
+                <i class="fa-solid fa-truck-fast"></i> Promoție Livrare
+              </div>
+              <div class="card-body text-center">
+                <h4 class="card-title-custom">Livrăm gratuit!</h4>
+                <p class="card-text">Pentru orice comandă > <strong>500 RON</strong>, transportul este din partea noastră.</p>
+                <a href="/produse" class="btn-custom-outline">Vezi Produse</a>
+              </div>
+            </div>
+          </div>
 
-    <div class="col-md-6">
-      <div class="card h-100 border-secondary shadow-sm">
-        <div class="card-header bg-secondary text-mahon">
-          <i class="fa-solid fa-clock"></i> Program Sărbători
+          <% if (locals.ofertaCurenta) { %>
+          <div class="col-12">
+            <div class="card card-personalizat card-border-accent shadow">
+              <div class="card-header-custom header-oferta d-flex justify-content-between align-items-center">
+                <span><i class="fa-solid fa-bolt"></i> OFERTĂ LIMITATĂ</span>
+                <span class="badge-oferta">ACTIVĂ</span>
+              </div>
+              <div class="card-body text-center">
+                <h2 class="display-reducere">REDUCERE DE <%= ofertaCurenta.reducere %>%</h2>
+                <p class="categorie-text">La categoria: <strong><%= ofertaCurenta.categorie %></strong></p>
+                
+                <div id="timer-oferta" data-finalizare="<%= ofertaCurenta['data-finalizare'] %>" class="timer-style">
+                  00:00:00
+                </div>
+                
+                <div class="mt-4">
+                  <a href="/produse?tip=<%= ofertaCurenta.categorie %>" class="btn-custom-plin">Profită de reducere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Program Special</h5>
-          <p class="card-text">În perioada următoare, showroom-ul Acoustic Avenue va fi deschis între orele 10:00 - 16:00 pentru testarea instrumentelor.</p>
-          <span class="badge bg-info text-dark">Info Utile</span>
+        <div class="alert alert-warning mt-4 d-flex align-items-center shadow-sm" role="alert">
+          <i class="fa-solid fa-triangle-exclamation me-3 fs-4"></i>
+          <div>
+            Stoc limitat pentru chitarele electrice din seria <strong>Red ST</strong>!
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="alert alert-warning mt-4 d-flex align-items-center" role="alert">
-    <i class="fa-solid fa-triangle-exclamation me-3"></i>
-    <div>
-      Stoc limitat pentru chitarele electrice din seria <strong>Red ST</strong>! Verifică disponibilitatea în magazin.
-    </div>
-  </div>
-</section>
+      </section>
         <section id="zona7">
           <h3>Info Server</h3>
           <p>Lorem ipsum: Server status online. Versiune site: 2.0.</p>
@@ -494,4 +553,5 @@
       <%- include("../fragmente/footer.ejs") %>
 
     </body>
+    <script src="/resurse/js/oferte.js" defer></script>
 </html>

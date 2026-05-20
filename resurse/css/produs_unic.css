@@ -1,0 +1,188 @@
+.plansa-produs {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.plansa-produs .sectiune-superioara {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+  .plansa-produs .sectiune-superioara {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container-foto .carousel-inner {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.container-foto .carousel-inner img {
+  object-fit: contain;
+  height: 450px;
+  background: #fff;
+}
+
+.detalii-principale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.detalii-principale .header-produs-body {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.detalii-principale .header-produs-body .cod-produs {
+  color: #666;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+.detalii-principale .header-produs-body .nume-mare-body {
+  font-size: 2.2rem;
+  color: #4a2c2a;
+  margin: 0.5rem 0;
+  font-weight: 800;
+}
+.detalii-principale .header-produs-body .categorie-badge {
+  display: inline-block;
+  background: #f8f9fa;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.plansa-pret {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plansa-pret .valoare-pret {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #4a2c2a;
+}
+.plansa-pret .valoare-pret small {
+  font-size: 1rem;
+  margin-left: 5px;
+}
+.plansa-pret .btn-colectie {
+  background: #4a2c2a;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.plansa-pret .btn-colectie:hover {
+  background: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.plansa-pret .btn-colectie i {
+  margin-right: 8px;
+}
+
+.sectiune-inferioara-linie {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .sectiune-inferioara-linie {
+    grid-template-columns: 1fr;
+  }
+}
+.sectiune-inferioara-linie .panou-info {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.sectiune-inferioara-linie .panou-info h3 {
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #4a2c2a;
+}
+
+.grid-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.grid-specs .item-spec {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ddd;
+}
+.grid-specs .item-spec strong {
+  color: #4a2c2a;
+}
+.grid-specs .item-spec span {
+  color: #666;
+}
+
+.produse-similare {
+  margin-top: 4rem;
+}
+.produse-similare h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #4a2c2a;
+  font-weight: 800;
+}
+.produse-similare .container-similare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.produse-similare .card-similar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  border: 1px solid #eee;
+  text-align: center;
+}
+.produse-similare .card-similar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.produse-similare .card-similar img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.produse-similare .card-similar a {
+  text-decoration: none;
+  color: #4a2c2a;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.produse-similare .card-similar a:hover {
+  color: #d4af37;
+}
+.produse-similare .card-similar .pret-similar {
+  color: #d4af37;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
